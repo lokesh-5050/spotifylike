@@ -1,0 +1,80 @@
+.left {
+  width: 15vmax;
+  height: 100vh;
+  background-color: rgb(43, 43, 43);
+  padding: 3vh 2vw;
+}
+.spotify_logo {
+  width: 9vmax;
+}
+.options {
+  display: flex;
+  flex-direction: column;
+}
+
+.main_logos {
+  padding: 3.5vh 0vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+}
+
+.main_list {
+  width: 10vw;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  gap: 1.2vw;
+  object-fit: contain;
+}
+.main_list > svg {
+  color: #fff;
+}
+.main_list > h6 {
+  margin-top: 7px;
+  font-size: 0.9vw;
+  /* background-color: skyblue; */
+}
+
+.secOptions {
+  margin-top: -1vw;
+}
+
+.box {
+  width: 20px;
+  height: 20px;
+  background-color: #dadada;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.playlists {
+  margin-top: -2.1vw;
+  width: 23.5vh;
+  background-color: skyblue;
+  max-height: 16vmax;
+  overflow-y: scroll;
+    
+}
+.playlists::-webkit-scrollbar{
+    width: 13px;
+
+}
+/* .playlists::-webkit-scrollbar-track{ */
+    /* background-color: rgb(54, 54, 54); */
+/* } */
+.playlists::-webkit-scrollbar-thumb{
+    background-color: rgb(53, 53, 53);
+}
+
+.playlist_name {
+  height: 1.3vmax;
+}
+.install{
+    display: flex;
+    gap: 10px;
+}
+.install > h6{
+    margin-top: 1px;
+}

@@ -1,9 +1,10 @@
 import React from 'react'
+import Homepage from './Components/Homepage/Homepage'
 
 const App = () => {
   return (
     <>
-      <h2>hey</h2>
+    <Homepage/>
     </>
   )
 }
