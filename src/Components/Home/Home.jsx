@@ -1,7 +1,10 @@
 import React from 'react'
+import { FaHeart } from 'react-icons/fa'
+import Card from '../Cards/Card'
 import Footer from '../Footer/Footer'
 import Navbar from '../Navbar/Navbar'
 import module from './Home.module.css'
+import ArtistCard from '../Cards/ArtistCard'
 const Home = () => {
   return (
     <>
@@ -55,7 +58,7 @@ const Home = () => {
               </div>
 
 
-              <hr style={{ width: "30vh", color: "#dfdfdf" }} />
+              <hr style={{ width: "23.5vh", color: "#dfdfdf" }} />
 
               <div className={`${module.main_logos} ${module.playlists} `}>
                 <div className={`${module.main_list} ${module.playlist_name}`}>
@@ -113,12 +116,52 @@ const Home = () => {
         <div className={`${module.right}`}>
           <div className={`${module.nav}`}>
             <Navbar />
-
-            <div className="container">
-              <h1>Good Morning</h1>
+          </div>
+          <div className={`${module.welcome_msg}`}>
+            <h2>Good Morning</h2>
+            <div className={`${module.wel_cards}`}>
+              <div className={`${module.item}`}>
+                <div className={`${module.bigBox}`}>
+                  <FaHeart />
+                </div>
+                <h5>Liked Songs</h5>
+              </div>
+              <div className={`${module.item}`}>
+                <div className={`${module.bigBox}`}>
+                  <img src="https://i.scdn.co/image/ab67706f00000002ca5a7517156021292e5663a6" alt="" />
+                </div>
+                <h5>Recently Played</h5>
+              </div>
             </div>
 
+            <div className={`${module.shows_to_try}`}>
+              <div className="shows">
+                <Card showsToTry="Shows to try" />  
+              </div>
+            </div>
+
+            <div className={`${module.shows_to_try}`}>
+              <div className="shows">
+                <Card topMixes="Your top mixes"/>
+              </div>
+            </div>
+
+            <div className={`${module.shows_to_try}`}>
+              <div className="shows">
+                <Card recentlyPlayed="Recently Played"/>
+              </div>
+            </div>
+
+            <div className={`${module.shows_to_try}`}>
+              <div className="shows">
+                <ArtistCard/>
+              </div>
+            </div>
+
+            {/* ... */}
           </div>
+
+
         </div>
 
 

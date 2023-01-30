@@ -1,0 +1,54 @@
+.cards {
+    width: 100%;
+    /* background-color: teal; */
+    display: flex;
+    gap: 1.3vmax;
+
+}
+
+.card {
+    max-width: 15vmax;
+    height: 19vmax;
+    background-color: #2b2b2b7c;
+    border-radius: 10px;
+}
+
+.cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1vw;
+}
+
+.cover>img {
+    width: 78%;
+    height: 78%;
+    border-radius: 10px;
+}
+
+.card>h6 {
+    padding-top: 0.8vw;
+    padding-left: 2vw;
+}
+
+.card>p {
+    padding-left: 2vw;
+    font-size: 0.9vw;
+}
+
+.showAll {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 1vw;
+    margin-bottom: 2vmax;
+}
+
+.showAll>h6 {
+    text-decoration: underline;
+}
+
+/* artist card */
+.artist>img{
+    border-radius: 100px;
+}
