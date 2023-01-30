@@ -5,6 +5,7 @@ import Footer from '../Footer/Footer'
 import Navbar from '../Navbar/Navbar'
 import module from './Home.module.css'
 import ArtistCard from '../Cards/ArtistCard'
+import { Link } from 'react-router-dom'
 const Home = () => {
   return (
     <>
@@ -20,7 +21,9 @@ const Home = () => {
             <div className={`${module.main_logos} `}>
               <div className={`${module.main_list}`}>
                 <svg role="img" height="24" width="24" fill='white' aria-hidden="true" className="Svg-sc-ytk21e-0 uPxdw home-active-icon" viewBox="0 0 24 24" data-encore-id="icon"><path d="M13.5 1.515a3 3 0 00-3 0L3 5.845a2 2 0 00-1 1.732V21a1 1 0 001 1h6a1 1 0 001-1v-6h4v6a1 1 0 001 1h6a1 1 0 001-1V7.577a2 2 0 00-1-1.732l-7.5-4.33z"></path></svg>
-                <h6>Home</h6>
+                <h6>
+                  <Link className='text-light' to='/'>Home</Link>
+                </h6>
               </div>
 
               <div className={`${module.main_list} `}>
@@ -43,16 +46,16 @@ const Home = () => {
 
               </div>
 
-              <div className={`${module.main_list} `}>
-                <div className={`${module.box}`}>
-                  <svg role="img" height="12" width="12" aria-hidden="true" viewBox="0 0 16 16" data-encore-id="icon" className="Svg-sc-ytk21e-0 uPxdw"><path d="M15.724 4.22A4.313 4.313 0 0012.192.814a4.269 4.269 0 00-3.622 1.13.837.837 0 01-1.14 0 4.272 4.272 0 00-6.21 5.855l5.916 7.05a1.128 1.128 0 001.727 0l5.916-7.05a4.228 4.228 0 00.945-3.577z"></path></svg>
+              <div className={`${module.main_list}  `}>
+                <div className={`${module.box} ${module.likedS}`}>
+                  <svg role="img" height="12" width="12" fill='#dadada' aria-hidden="true" viewBox="0 0 16 16" data-encore-id="icon" className="Svg-sc-ytk21e-0 uPxdw"><path d="M15.724 4.22A4.313 4.313 0 0012.192.814a4.269 4.269 0 00-3.622 1.13.837.837 0 01-1.14 0 4.272 4.272 0 00-6.21 5.855l5.916 7.05a1.128 1.128 0 001.727 0l5.916-7.05a4.228 4.228 0 00.945-3.577z"></path></svg>
                 </div>
-                <h6>Search</h6>
+                <h6>Liked Songs</h6>
               </div>
 
               <div className={`${module.main_list} `}>
-                <div className={`${module.box}`}>
-                  <svg role="img" height="13" width="13" aria-hidden="true" viewBox="0 0 16 16" data-encore-id="icon" className="Svg-sc-ytk21e-0 uPxdw"><path d="M3.75 0A1.75 1.75 0 002 1.75v12.952c0 1.051 1.22 1.633 2.037.972l3.962-3.208 3.943 3.204c.817.663 2.038.082 2.038-.97V1.75A1.75 1.75 0 0012.23 0H3.75z"></path></svg>
+                <div className={`${module.box} ${module.lib}`}>
+                  <svg role="img" height="13" width="13" fill='#079c07' aria-hidden="true" viewBox="0 0 16 16" data-encore-id="icon" className="Svg-sc-ytk21e-0 uPxdw"><path d="M3.75 0A1.75 1.75 0 002 1.75v12.952c0 1.051 1.22 1.633 2.037.972l3.962-3.208 3.943 3.204c.817.663 2.038.082 2.038-.97V1.75A1.75 1.75 0 0012.23 0H3.75z"></path></svg>
                 </div>
                 <h6>Your Libraray</h6>
               </div>
@@ -136,25 +139,25 @@ const Home = () => {
 
             <div className={`${module.shows_to_try}`}>
               <div className="shows">
-                <Card showsToTry="Shows to try" />  
+                <Card showsToTry="Shows to try" />
               </div>
             </div>
 
             <div className={`${module.shows_to_try}`}>
               <div className="shows">
-                <Card topMixes="Your top mixes"/>
+                <Card topMixes="Your top mixes" />
               </div>
             </div>
 
             <div className={`${module.shows_to_try}`}>
               <div className="shows">
-                <Card recentlyPlayed="Recently Played"/>
+                <Card recentlyPlayed="Recently Played" />
               </div>
             </div>
 
             <div className={`${module.shows_to_try}`}>
               <div className="shows">
-                <ArtistCard/>
+                <ArtistCard />
               </div>
             </div>
 
