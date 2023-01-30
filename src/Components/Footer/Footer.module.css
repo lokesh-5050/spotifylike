@@ -1,0 +1,132 @@
+.footer {
+    width: 100%;
+    height: 13vh;
+    background-color: #292929;
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    z-index: 888;
+
+}
+
+.song_info {
+    width: 21vw;
+    display: flex;
+    gap: 1vw;
+    justify-content: center;
+    align-content: center;
+    padding: 1.82vh 1vh;
+    color: rgb(231, 231, 231);
+}
+
+.song_info span {
+    font-size: 0.68vw;
+}
+
+.title {
+    padding: 1.2vh 0;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    padding: 2.3vh 1vw;
+}
+
+.controls {
+    width: 40vmax;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1vw 1vw;
+}
+
+
+.top {
+    width: 25vmax;
+    height: 5vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+}
+
+.box {
+    width: 35px;
+    font-size: 1.7vw;
+    height: 35px;
+    background-color: #fff;
+    color: #000;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    padding-left: 4px;
+    align-items: center;
+}
+
+.timeline>input {
+    width: 35vw;
+    height: 0.65vh;
+}
+
+.timeline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 5vh;
+    /* background-color: red; */
+    padding-bottom: 10px;
+
+}
+
+.timeline:hover .time::-webkit-slider-thumb,
+.timmeline:hover .time::-webkit-slider-thumb{
+    opacity: 1;
+}
+
+.timeline>p {
+    margin-top: 1vw;
+}
+
+.connect {
+    width: 20vw;
+    display: flex;
+    padding: 40px 0;
+    font-size: 1.4vw;
+}
+
+.volume {
+    display: flex;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.volume>input {
+    width: 7vw;
+    height: 0.3vw;
+    accent-color: #fff;
+
+
+}
+
+input {
+    accent-color: #fff;
+}
+
+.time::-webkit-slider-thumb{
+    opacity: 0;
+}
+
+.volume:hover .time::-webkit-slider-thumb,
+.volume.hover .time::-webkit-slider-thumb {
+    opacity: 1;
+}
+
+.time:hover{
+    accent-color: rgb(3, 160, 3);
+}
+

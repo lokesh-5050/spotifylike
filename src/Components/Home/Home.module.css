@@ -1,7 +1,7 @@
 .left {
   width: 15vmax;
   height: 100vh;
-  background-color: rgb(43, 43, 43);
+  background-color: rgb(0, 0, 0);
   padding: 3vh 2vw;
 }
 .spotify_logo {
@@ -63,7 +63,7 @@
 }
 
 .playlists::-webkit-scrollbar-thumb{
-    background-color: rgb(53, 53, 53);
+    background-color: rgb(22, 22, 22);
 }
 
 .playlist_name {
@@ -75,4 +75,25 @@
 }
 .install > h6{
     margin-top: 1px;
+}
+.warp{
+  display: flex;
+}
+.right{
+  width: 100vmax;
+  height: 100vh;
+  background-color: rgb(245, 245, 245);
+  padding: 0vw 2vw;
+
+}
+.nav{
+  position: fixed;
+  width: 82.999%;
+
+}
+.footer{
+  background-color: red;
+  position: fixed;
+  bottom: 0vw;
+  width: 100%;
 }
