@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md'
 import { RiArrowDownSFill } from 'react-icons/ri'
+import { IoMdArrowDropup } from 'react-icons/io'
 import { Link } from 'react-router-dom'
 import module from './Navbar.module.css'
 const Navbar = () => {
@@ -40,7 +41,8 @@ const Navbar = () => {
                                 <img src="https://i.scdn.co/image/ab67706f00000002b7d25e59b0f3847ac0a66412" alt="" />
                             </div>
                             <h6>Lokesh Mali</h6>
-                            <h5><RiArrowDownSFill fontSize='1.7vw' /></h5>
+                            <h5>{opt ? <IoMdArrowDropup fontSize='1.6vw' /> : <RiArrowDownSFill fontSize='1.6vw' />}
+                            </h5>
                         </div>
                         <div className={`${module.down}`}>
                             <h6>Lokesh Mali</h6>

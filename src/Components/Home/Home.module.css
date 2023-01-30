@@ -14,6 +14,9 @@
   display: flex;
   flex-direction: column;
 }
+.main_logos > a{
+  text-decoration: none;
+}
 
 .main_logos {
   padding: 3.5vh 0vw;

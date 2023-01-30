@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import module from './Footer.module.css'
 import { FaHeart } from 'react-icons/fa'
 import { CgInpicture } from 'react-icons/cg'
@@ -9,8 +9,10 @@ import { FiRepeat } from 'react-icons/fi'
 import { HiQueueList } from 'react-icons/hi2'
 import { TbDevices2 } from 'react-icons/tb'
 import { HiSpeakerWave } from 'react-icons/hi2'
+import { IoPause } from 'react-icons/io5'
 
 const Footer = () => {
+    const [isPlaying, setIsPlaying] = useState(false)
     return (
         <>
             <div className={`${module.footer}`}>
@@ -35,7 +37,7 @@ const Footer = () => {
                         <BiShuffle fontSize='1.8vw' />
                         <GiPreviousButton fontSize='1.8vw' />
                         <div className={`${module.box}`}>
-                            <BsFillPlayFill />
+                            {isPlaying ? <IoPause fontSize='1.3vw' /> : <BsFillPlayFill fontSize='1.5vw' />}
                         </div>
                         <GiNextButton fontSize='1.8vw' />
                         <FiRepeat fontSize='1.5vw' />
@@ -55,7 +57,7 @@ const Footer = () => {
                     <HiQueueList />
 
                     <TbDevices2 />
-                        <div className={`${module.volume}`}>
+                    <div className={`${module.volume}`}>
                         <HiSpeakerWave />
                         <input type="range" className={`${module.time}`} />
                     </div>

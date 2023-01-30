@@ -10,6 +10,7 @@ const App = () => {
     <Routes>
       <Route path='/' element={<SharedHomepage/>}>
         <Route index element={<Homepage/>}/>
+        <Route path='search' element={<Homepage/>}/>
       </Route>
     </Routes>
 

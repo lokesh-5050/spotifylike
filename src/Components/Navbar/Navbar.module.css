@@ -128,9 +128,10 @@
     gap: 5px;
     padding: 3px 2px;
     color: rgb(206, 205, 205);
-    
-} 
-.user_options>  a > .list{
+
+}
+
+.user_options>a>.list {
     padding: 4px 7px;
     display: flex;
     justify-content: space-between;
@@ -138,15 +139,18 @@
     /* background-color: orange; */
     color: rgb(206, 205, 205);
 }
-.user_options > a{
+
+.user_options>a {
     text-decoration: none;
 
 }
-.user_options > .list > h6{
+
+.user_options>.list>h6 {
     font-size: 1.02vmax;
 
 }
-.user_options > .addHr{
+
+.user_options>.addHr {
     border-bottom: 1px solid #fff;
 }
 
