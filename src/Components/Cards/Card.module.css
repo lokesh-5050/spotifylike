@@ -4,12 +4,13 @@
     display: flex;
     flex-wrap: wrap;
     gap: 1.3vmax;
-
 }
-.cards_flex{
+
+.cards_flex {
     display: flex;
     flex-wrap: wrap;
 }
+
 .card {
     max-width: 15vmax;
     height: 19.3vmax;
@@ -48,10 +49,9 @@
     margin-bottom: 2vmax;
 }
 
-    
+
 
 /* artist card */
-.artist>img{
+.artist>img {
     border-radius: 100px;
 }
-

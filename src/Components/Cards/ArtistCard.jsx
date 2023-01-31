@@ -1,11 +1,11 @@
 import React from 'react'
 import module from './Card.module.css'
-const Card = ({ showsToTry, topMixes, recentlyPlayed }) => {
+const Card = ({ showsToTry, topMixes, recentlyPlayed, artists }) => {
   return (
     <>
       <div className={`${module.showAll}`}>
-        <h4>{showsToTry || topMixes || recentlyPlayed}</h4>
-        <h6>Show all</h6>
+        <h4>{showsToTry || topMixes || recentlyPlayed || artists}</h4>
+        <h6>Show all</h6> 
       </div>
       <div className={`${module.cards}`}>
 

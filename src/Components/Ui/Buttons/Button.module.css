@@ -1,0 +1,16 @@
+.button {
+    width: 12vmax;
+    height: 3.2vmax;
+    background-color: #fff;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    padding-top: 4.3px;
+}
+
+.button>h6 {
+
+    font-size: 1.1vmax;
+}

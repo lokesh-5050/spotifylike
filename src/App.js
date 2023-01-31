@@ -19,6 +19,8 @@ const App = () => {
             <Route index element={<Library />} />
             <Route path='playlists' element={<Library />} />
             <Route path='podcasts' element={<Podcasts />} />
+            <Route path='artists' element={<Library artists='true'/>} />
+            <Route path='albums' element={<Podcasts albums='true'/>} />
 
           </Route>
         </Route>

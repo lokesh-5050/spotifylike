@@ -129,7 +129,6 @@ const Home = () => {
           </div>
         </div>
 
-
         <div className={`${module.right}`}>
           <div className={`${module.nav}`}>
             <Navbar />
