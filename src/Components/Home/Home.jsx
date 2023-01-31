@@ -19,12 +19,14 @@ const Home = () => {
           {/* main logos start */}
           <div className={`${module.options}`}>
             <div className={`${module.main_logos} `}>
-              <div className={`${module.main_list}`}>
-                <svg role="img" height="24" width="24" fill='white' aria-hidden="true" className="Svg-sc-ytk21e-0 uPxdw home-active-icon" viewBox="0 0 24 24" data-encore-id="icon"><path d="M13.5 1.515a3 3 0 00-3 0L3 5.845a2 2 0 00-1 1.732V21a1 1 0 001 1h6a1 1 0 001-1v-6h4v6a1 1 0 001 1h6a1 1 0 001-1V7.577a2 2 0 00-1-1.732l-7.5-4.33z"></path></svg>
-                <h6>
-                  <Link className='text-light' to='/'>Home</Link>
-                </h6>
-              </div>
+              <Link className='text-light' to='/'>
+                <div className={`${module.main_list}`}>
+                  <svg role="img" height="24" width="24" fill='white' aria-hidden="true" className="Svg-sc-ytk21e-0 uPxdw home-active-icon" viewBox="0 0 24 24" data-encore-id="icon"><path d="M13.5 1.515a3 3 0 00-3 0L3 5.845a2 2 0 00-1 1.732V21a1 1 0 001 1h6a1 1 0 001-1v-6h4v6a1 1 0 001 1h6a1 1 0 001-1V7.577a2 2 0 00-1-1.732l-7.5-4.33z"></path></svg>
+                  <h6>
+                    Home
+                  </h6>
+                </div>
+              </Link>
 
               <Link to='/search'>
 
@@ -34,7 +36,7 @@ const Home = () => {
                 </div>
               </Link>
 
-              <Link to='/your-library'>
+              <Link to='/collection/playlists'>
                 <div className={`${module.main_list} `}>
                   <svg role="img" height="24" width="24" fill='white' aria-hidden="true" className="Svg-sc-ytk21e-0 uPxdw collection-icon" viewBox="0 0 24 24" data-encore-id="icon"><path d="M14.5 2.134a1 1 0 011 0l6 3.464a1 1 0 01.5.866V21a1 1 0 01-1 1h-6a1 1 0 01-1-1V3a1 1 0 01.5-.866zM16 4.732V20h4V7.041l-4-2.309zM3 22a1 1 0 01-1-1V3a1 1 0 012 0v18a1 1 0 01-1 1zm6 0a1 1 0 01-1-1V3a1 1 0 012 0v18a1 1 0 01-1 1z"></path></svg>
                   <h6>Your Libraray</h6>

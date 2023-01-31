@@ -1,0 +1,31 @@
+.wrap{
+    display: flex;
+    gap: 2vmax;
+}
+.left {
+    width: 15vmax;
+    height: 100vh;
+    background-color: yellow;
+  }
+
+.right{
+    width:82vmax;
+    background-color: rgb(50, 51, 51);
+    /* padding-left: 3vmax; */
+    padding-bottom: 13vmax;
+    color: #fff;
+
+}
+
+.searchFor{
+  padding: 3.2vh 0vh;
+}
+.searchFor > h3{
+  margin-bottom: 1.5vmax;
+}
+.footer {
+    background-color: red;
+    position: fixed;
+    bottom: 0vw;
+    width: 100%;
+  }

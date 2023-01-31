@@ -1,0 +1,104 @@
+.left {
+    width: 15vmax;
+    height: 100vh;
+    background-color: rgb(0, 0, 0);
+    padding: 3vh 2vw;
+    position: fixed;
+  }
+  
+  .spotify_logo {
+    width: 9vmax;
+  }
+  
+  .options {
+    display: flex;
+    flex-direction: column;
+  }
+  .main_logos > a{
+    text-decoration: none;
+  }
+  
+  .main_logos {
+    padding: 3.5vh 0vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+  }
+  
+  .main_list {
+    width: 10vw;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    gap: 1.2vw;
+    object-fit: contain;
+  }
+  
+  .main_list>svg {
+    color: #fff;
+  }
+  
+  .main_list>.likedS {
+    background-image: linear-gradient(to right bottom, #3b51e1, #4d55e0, #5b59df, #675dde, #7162dd, #5d75e7, #4a86ee, #3d95f1, #2faff0, #5bc5e9, #8ed7e2, #c0e7e4);
+    color: #079c07;
+  }
+  .main_list>.lib{
+    background-image: linear-gradient(to right bottom, #0e6023, #115e1f, #145c1a, #165a16, #185811, #185711, #195711, #195611, #185715, #175819, #16591d, #155a21);
+  }
+  
+  .main_list>h6 {
+    margin-top: 7px;
+    font-size: 0.9vw;
+  
+    /* background-color: skyblue; */
+  }
+  
+  .main_list>h6>a {
+    text-decoration: none;
+    display: flex;
+  }
+  
+  .secOptions {
+    margin-top: -1vw;
+  }
+  
+  .box {
+    width: 23px;
+    height: 23px;
+    background-color: #dadada;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1px;
+  }
+  
+  .playlists {
+    margin-top: -2.1vw;
+    width: 23.5vh;
+    /* background-color: skyblue; */
+    max-height: 16vmax;
+    overflow-y: scroll;
+  
+  }
+  
+  .playlists::-webkit-scrollbar {
+    width: 13px;
+  
+  }
+  
+  .playlists::-webkit-scrollbar-thumb {
+    background-color: rgb(22, 22, 22);
+  }
+  
+  .playlist_name {
+    height: 1.3vmax;
+  }
+  
+  .install {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .install>h6 {
+    margin-top: 1px;
+  }

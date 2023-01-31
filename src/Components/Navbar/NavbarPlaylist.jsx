@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md'
 import { RiArrowDownSFill } from 'react-icons/ri'
 import { IoMdArrowDropup } from 'react-icons/io'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import module from './Navbar.module.css'
 const Navbar = () => {
     const [opt, setOpt] = useState(false)
@@ -17,6 +17,10 @@ const Navbar = () => {
             setOpt(!opt)
         }
     }
+
+    const on = module.on
+    const off = module.inactive
+
     return (
         <>
             <div className={`${module.nav}`}>
@@ -30,6 +34,35 @@ const Navbar = () => {
                         <div className={`${module.cir}`}>
                             <MdArrowForwardIos />
                         </div>
+                    </div>
+
+                    <div className={`${module.options_link}`}>
+                        <NavLink className={({ isActive }) => isActive ? module.on : ''} to='/collection/playlists'>
+                            <div className={`${module.graBox}`}>
+                                <h6>Playlists</h6>
+                            </div>
+                        </NavLink>
+
+
+
+                        <NavLink className={({ isActive }) => isActive ? module.on : ''} to='/collection/podcasts'>
+                            <div className={`${module.graBox}`}>
+                                <h6>Podcasts</h6>
+                            </div>
+                        </NavLink>
+
+                        <NavLink className={({ isActive }) => isActive ? module.on : ''} to='/collection/artists'>
+                            <div className={`${module.graBox}`}>
+                                <h6>Artists</h6>
+                            </div>
+                        </NavLink>
+
+                        <NavLink className={({ isActive }) => isActive ? module.on : ''} to='/collection/albums'>
+                            <div className={`${module.graBox}`}>
+                                <h6>Albums</h6>
+                            </div>
+                        </NavLink>
+
                     </div>
 
                 </div>

@@ -4,6 +4,7 @@ import { RiArrowDownSFill } from 'react-icons/ri'
 import { IoMdArrowDropup } from 'react-icons/io'
 import { Link } from 'react-router-dom'
 import module from './Navbar.module.css'
+import { RiSearchLine } from 'react-icons/ri'
 const Navbar = () => {
     const [opt, setOpt] = useState(false)
     const dropDownNav = useRef(null)
@@ -30,6 +31,13 @@ const Navbar = () => {
                         <div className={`${module.cir}`}>
                             <MdArrowForwardIos />
                         </div>
+                    </div>
+
+                    <div className={`${module.search}`}>
+                        <form className={`${module.searchBar}`}>
+                            <RiSearchLine fontSize='1.5vw' fill='#000' color='#000'/>
+                            <input type="text"  placeholder='What do you want to listen to' />
+                        </form>
                     </div>
 
                 </div>

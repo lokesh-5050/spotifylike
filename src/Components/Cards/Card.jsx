@@ -1,13 +1,16 @@
 import React from 'react'
 import module from './Card.module.css'
-const Card = ({ showsToTry, topMixes, recentlyPlayed }) => {
+import PlaylistCard from './PlaylistCard'
+const Card = ({ showsToTry, topMixes, recentlyPlayed, playlist }) => {
   return (
     <>
-      <div className={`${module.showAll}`}>
+      {playlist ? '' : (<div className={`${module.showAll}`}>
         <h4>{showsToTry || topMixes || recentlyPlayed}</h4>
         <h6>Show all</h6>
-      </div>
-      <div className={`${module.cards}`}>
+      </div>)}
+
+      <div className={`${module.cards} ${playlist ? module.cards_flex : ''}}`}>
+        {playlist ? <PlaylistCard /> : ''}
 
         <div className={`${module.card}`}>
           <div className={`${module.cover}`}>

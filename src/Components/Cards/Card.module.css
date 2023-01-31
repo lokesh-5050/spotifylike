@@ -2,13 +2,17 @@
     width: 100%;
     /* background-color: teal; */
     display: flex;
+    flex-wrap: wrap;
     gap: 1.3vmax;
 
 }
-
+.cards_flex{
+    display: flex;
+    flex-wrap: wrap;
+}
 .card {
     max-width: 15vmax;
-    height: 19vmax;
+    height: 19.3vmax;
     background-color: #2b2b2b7c;
     border-radius: 10px;
 }
@@ -50,3 +54,4 @@
 .artist>img{
     border-radius: 100px;
 }
+

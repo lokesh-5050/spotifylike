@@ -23,8 +23,41 @@
 
 .left {
     display: flex;
+    width: 34vmax;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigations {
+    display: flex;
     width: 7vmax;
+    height: 3.5vw;
+    align-items: center;
     justify-content: space-around;
+    /* background-color: rgb(206, 0, 0); */
+
+}
+
+.searchBar {
+    width: 27vmax;
+    height: 5vh;
+
+    border-radius: 20px;
+    background-color: #fff;
+    padding-left: 0.8vmax;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.searchBar>input {
+
+    padding-left: 10px;
+    width: 25vmax;
+    height: inherit;
+    outline: none;
+    border: none;
+    border-radius: 20px;
 }
 
 .right {
@@ -156,4 +189,43 @@
 
 .user_options {
     visibility: hidden;
+}
+
+/* NavbarPlaylist */
+.options_link {
+    width: 25vmax;
+    height: 5.5vh;
+    display: flex;
+    gap: 10px;
+}
+.options_link > a{
+    color: #fff;
+    text-decoration: none;
+    /* background-color: yellow; */
+}
+.options_link > a:hover{
+    color: #fff;
+}
+.graBox {
+    width: 7vmax;
+    height: 100%;
+    /* background-color: rgba(73, 73, 73, 0.733); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
+    font-weight: 900;
+    
+}
+.on{
+    border-radius: 5px;
+    background-color: #5f5d5da6;
+}
+.inactive{
+    border-radius: 5px;
+    background-color: rgba(94, 93, 93, 0);
+}
+
+.graBox>h6 {
+    font-size: 0.9vmax;
 }
