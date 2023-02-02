@@ -74,7 +74,6 @@ const Home = () => {
                 </div>
               </Link>
 
-
               <hr style={{ width: "23.5vh", color: "#dfdfdf" }} />
 
               <div className={`${module.main_logos} ${module.playlists} `}>

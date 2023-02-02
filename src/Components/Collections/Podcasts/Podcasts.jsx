@@ -13,7 +13,7 @@ const Podcasts = ({ albums }) => {
           <h6>Follow podcasts you like by tapping the follow button.</h6>
           <Button />
         </div>
-        {albums ? "" : (<div className={`${module.pcasts}`}>
+        {albums ? (<div className={`${module.albums}`}>h</div>) : (<div className={`${module.pcasts}`}>
           <h4>Top podcasts</h4>
           <Card />
         </div>)}

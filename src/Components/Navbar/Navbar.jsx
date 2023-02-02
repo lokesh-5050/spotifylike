@@ -4,7 +4,7 @@ import { RiArrowDownSFill } from 'react-icons/ri'
 import { IoMdArrowDropup } from 'react-icons/io'
 import { Link } from 'react-router-dom'
 import module from './Navbar.module.css'
-const Navbar = () => {
+const Navbar = ({navColor}) => {
     const [opt, setOpt] = useState(false)
     const dropDownNav = useRef(null)
     const userActions = useRef(null)
@@ -19,7 +19,7 @@ const Navbar = () => {
     }
     return (
         <>
-            <div className={`${module.nav}`}>
+            <div className={`${module.nav}`} style={{backgroundColor:navColor}}>
                 <div className={`${module.left}`}>
                     <div className={`${module.navigations}`}>
 

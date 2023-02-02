@@ -14,12 +14,15 @@ const SearchPage = () => {
                 </div>
 
                 <div className={`${module.right}`}>
-                        <NavbarSearch/>
-                        <div className={`${module.searchFor}`}>
-                            <h3>Browse all</h3>
-                            <Categories/>
-                        </div>
-                        <hr />
+
+                    <div className={`${module.nav}`}>
+                        <NavbarSearch />
+                    </div>
+                    <div className={`${module.searchFor}`}>
+                        <h3>Browse all</h3>
+                        <Categories />
+                    </div>
+                    <hr />
                 </div>
                 <div className={`${module.footer}`}>
                     <Footer />

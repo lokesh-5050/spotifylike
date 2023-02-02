@@ -8,6 +8,7 @@ const Playlists = ({ artists }) => {
         <>
             <div className={`${module.right}`}>
                 <div className={`${module.searchFor}`}>
+                    {artists ? "" : (<h4>Playlists</h4>)}
                     {/* {artists ? (<h3>Artists</h3> && <ArtistsCard />) : (<h3>Playlists</h3> && <Card playlist="true" />)} */}
                     {/* {artists ? (<h3 style={{ marginBottom: '-2vw' }}>Artists</h3>) : (<h3 >Playlists</h3>)} */}
                     {artists ? <ArtistsCard artists='Artists' /> : <Card playlist="true" />}

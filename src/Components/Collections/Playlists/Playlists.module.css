@@ -17,10 +17,10 @@
 
 }
 
-.searchFor{
-  padding: 3.2vh 0vh;
+.searchFor {
+  padding-top: 7vmax;
 }
-.searchFor > h3{
+.searchFor > h4{
   margin-bottom: 1.5vmax;
 }
 .footer {

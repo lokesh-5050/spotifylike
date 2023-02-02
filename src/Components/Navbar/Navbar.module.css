@@ -5,7 +5,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-right: 1.5vw;
+    padding-right: 1.7vw;
 
 }
 
@@ -23,7 +23,7 @@
 
 .left {
     display: flex;
-    width: 34vmax;
+    width: 35vmax;
     justify-content: space-between;
     align-items: center;
 }
@@ -44,7 +44,7 @@
 
     border-radius: 20px;
     background-color: #fff;
-    padding-left: 0.8vmax;
+    padding-left: 1vmax;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -62,8 +62,9 @@
 
 .right {
     display: flex;
-    width: 22vmax;
+    width: 24vmax;
     justify-content: space-around;
+
 }
 
 .btn {

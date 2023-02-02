@@ -1,0 +1,103 @@
+.outlets {
+
+    padding: -5vh 0;
+    width: 82vmax;
+    /* background-image: linear-gradient(to bottom, #cb1515, #b31315, #9b1115, #830f13, #6c0e11, #5e0d11, #500d0f, #420c0d, #380c0c, #2f0c0b, #260a09, #1d0606); */
+}
+
+.mainDiv {
+    padding-top: 2vmax;
+    width: inherit;
+    height: 40vh;
+   
+}
+
+.interactions {
+    display: flex;
+    align-items: center;
+    gap: 2vmax;
+    padding-bottom: 2.5vmax;
+}
+
+.songCollections {
+    width: 82vmax;
+    height: 40vh;
+   
+    padding: 2vh 2vmax;
+
+}
+
+.topBar {
+    width: 75vmax;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #dadada46;
+}
+
+.left {
+    display: flex;
+    gap: 1vmax;
+    margin-left: 1.3vmax;
+    align-items: center;
+}
+
+.left>img {
+    height: 3vmax;
+}
+
+.lists {
+    /* background-color: ; */
+    width: 75vmax;
+    padding: 2vh 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vmax;
+}
+
+.list {
+    width: 100%;
+    /* height: 6vh; */
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.musicDesc>h5 {
+    font-size: 1.2vmax;
+    line-height: 0.9vmax;
+    padding-top: 4px;
+
+}
+
+.musicDesc>h6 {
+    font-size: 0.9vmax;
+}
+
+.musicDesc {
+    width: 20vmax;
+    height: inherit;
+    /* background-color: green; */
+}
+
+/* .mainLeftSize{
+    background-color: peru;
+} */
+.mainTitle {
+    width: 20.5vmax;
+}
+
+.album {
+    margin-left: -6.8vmax;
+}
+
+.album>h6 {
+    font-size: 0.9vmax;
+
+}
+
+/* show play on hover */
+.showPlay {
+    margin-left: -0.4vw;
+}

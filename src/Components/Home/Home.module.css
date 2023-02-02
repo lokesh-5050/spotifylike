@@ -120,11 +120,16 @@
 
 .nav {
   position: fixed;
-  width: 84.999%;
+  width: 84vmax;
   left: 15vmax;
   padding-left: 1.6555vw;
   z-index: 99999;
+  display: flex;
+  padding-right: 0.2vmax;
+  justify-content: space-between;
 }
+
+
 
 .footer {
   background-color: red;
