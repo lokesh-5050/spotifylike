@@ -10,8 +10,11 @@ import SharedCollections from './Pages/SharedCollections'
 import SharedPlaylists from './Pages/SharedPlaylists'
 import Podcasts from './Components/Collections/Podcasts/Podcasts'
 import Music from './Components/Music'
+import Auth from './Components/SpotifyAuth/Auth'
 const App = () => {
   return (
+    //   393867c3f32941e6a1ebbf835500996f => Clinet_id
+    //  Client Secret e76d592308f742bf8a6743f06a2d4e2e
     <>
       <Routes>
         <Route path='/' element={<SharedHomepage />}>
@@ -19,17 +22,18 @@ const App = () => {
           <Route path='lokesh' element={<Music />} />
           <Route path='search' element={<SearchPage />} />
 
-          <Route path='playlist' element={<SharedPlaylists navColor='transparent'/>}> 
-            <Route path=':id' element={<ParentPlaylist/>}/>
+          <Route path='playlist' element={<SharedPlaylists navColor='transparent' />}>
+            <Route path=':id' element={<ParentPlaylist />} />
           </Route>
-    
-          
-          <Route path='collection' element={<SharedCollections/>}>
-              <Route index element={<Library />} />
-              <Route path='playlists' element={<Library />} />
-              <Route path='podcasts' element={<Podcasts />} />
-              <Route path='artists' element={<Library artists='true' />} />
-              <Route path='albums' element={<Podcasts albums='true' />} />
+
+          <Route path='data' element={<Auth />} />
+
+          <Route path='collection' element={<SharedCollections />}>
+            <Route index element={<Library />} />
+            <Route path='playlists' element={<Library />} />
+            <Route path='podcasts' element={<Podcasts />} />
+            <Route path='artists' element={<Library artists='true' />} />
+            <Route path='albums' element={<Podcasts albums='true' />} />
           </Route>
         </Route>
       </Routes>
