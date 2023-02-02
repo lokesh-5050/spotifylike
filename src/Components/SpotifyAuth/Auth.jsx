@@ -97,6 +97,10 @@ const Auth = () => {
 
     console.log(token);
 
+    const loadMusic = async () => {
+        const data = await Axios(`/search?q=weekend`) 
+        console.log(data);
+    }
 
    
     return (
