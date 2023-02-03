@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaHeart } from 'react-icons/fa'
 import Card from '../Cards/Card'
 import Footer from '../Footer/Footer'
@@ -11,7 +11,7 @@ import { handleAsync, handleAsyncUser } from '../../store/SpotifyApi/CurrentUser
 import { handleAsyncMoreData } from '../../store/SpotifyApi/MoreDataApi'
 const Home = () => {
 
-
+  const [minLimitHome, setminLimitHome] = useState(5)
   const user = useSelector((store) => store.currentUser.currentUser);
   // console.log(user, " user");
 
@@ -19,7 +19,21 @@ const Home = () => {
   // console.log(items, " playlists");
 
   const featuredPlaylists = useSelector((store) => store.moreData.featuredPlaylists)
-  console.log(featuredPlaylists, " featuredPlaylists");
+  // console.log(featuredPlaylists, " featuredPlaylists");
+
+  const newReleases = useSelector((store) => store.moreData.newReleases)
+  console.log(newReleases, " newReleases");
+
+  const tracks = useSelector((store) => store.moreData.severalTracks)
+  console.log(tracks, " tracks");
+
+  const artists = useSelector((store) => store.moreData.Artists)
+  console.log(artists, " artists");
+  
+  const Recommendations = useSelector((store) => store.moreData.Recommendations)
+  console.log(Recommendations, " Recommendations");
+
+
 
 
 
@@ -32,7 +46,7 @@ const Home = () => {
     if (token !== null) {
       console.log(token)
       Dispatch(handleAsyncUser(token))
-      Dispatch(handleAsyncMoreData(token))
+      Dispatch(handleAsyncMoreData(token, minLimitHome))
     } else {
       console.log("login");
     }
@@ -159,25 +173,31 @@ const Home = () => {
 
             <div className={`${module.shows_to_try}`}>
               <div className="shows">
-                <Card showsToTry="Featured Playlists" data={featuredPlaylists ? featuredPlaylists : ""} />
+                <Card feaPlyts="Featured Playlists" data={featuredPlaylists ? featuredPlaylists : ""} />
               </div>
             </div>
 
             <div className={`${module.shows_to_try}`}>
               <div className="shows">
-                <Card topMixes="Your top mixes" />
+                <Card newRelse="New Releases" data={newReleases ? newReleases : ""} />
               </div>
             </div>
 
             <div className={`${module.shows_to_try}`}>
               <div className="shows">
-                <Card recentlyPlayed="Recently Played" />
+                <Card tracktrue="Try Tracks" data={tracks ? tracks : ""} />
               </div>
             </div>
 
             <div className={`${module.shows_to_try}`}>
               <div className="shows">
-                <ArtistCard />
+                <ArtistCard artists='Artists' data={artists}/>
+              </div>
+            </div>
+
+            <div className={`${module.shows_to_try}`}>
+              <div className="shows">
+                <Card Recommanded='Recommanded' data={Recommendations ? Recommendations : ""}/>
               </div>
             </div>
 
