@@ -2,13 +2,13 @@ import axios from 'axios';
 import React from 'react'
 import { useEffect, useState } from 'react';
 import SpotifyPlayer from 'react-spotify-web-playback';
-import { Axios } from '../Axios/Axios';
+import { Axios, spotifyAPi } from '../Axios/Axios';
 const Auth = () => {
     const [searchKey, setSearchKey] = useState("")
     const [artists, setArtists] = useState([])
 
     const CLIENT_ID = "393867c3f32941e6a1ebbf835500996f"
-    const REDIRECT_URI = "http://localhost:3000/data"
+    const REDIRECT_URI = "http://localhost:3000"
     const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
     const RESPONSE_TYPE = "token"
 
@@ -95,14 +95,29 @@ const Auth = () => {
         ))
     }
 
-    console.log(token);
+    // console.log(token);
 
     const loadMusic = async () => {
-        const data = await Axios(`/search?q=weekend`) 
+        // const data = await Axios(`/search?q=without?you`) 
+
+        //user-info
+        // const {data} = await spotifyAPi(`/me`,{
+        //     headers:{
+        //         Authorization: `Bearer ${token}`
+        //     }
+        // })
+        // console.log(data.images[0].uri);
+
+        //current user's playlist
+        const { data } = await spotifyAPi(`/me/playlists`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
         console.log(data);
     }
 
-   
+
     return (
         <div className="App">
             <header className="App-header">
@@ -118,7 +133,7 @@ const Auth = () => {
                 <button type={"submit"}>Search</button>
             </form>
 
-            <button onClick={loadMusic}>Music</button>
+            <button onClick={loadMusic}>get logged info</button>
 
             {/* <SpotifyPlayer
                 token={token}
