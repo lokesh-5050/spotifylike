@@ -7,16 +7,19 @@ import module from './Home.module.css'
 import ArtistCard from '../Cards/ArtistCard'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { handleAsync } from '../../store/SpotifyApi/CurrentUserApi'
+import { handleAsync, handleAsyncUser } from '../../store/SpotifyApi/CurrentUserApi'
+import { handleAsyncMoreData } from '../../store/SpotifyApi/MoreDataApi'
 const Home = () => {
 
 
   const user = useSelector((store) => store.currentUser.currentUser);
-  console.log(user, " user");
+  // console.log(user, " user");
 
-  const playlists = useSelector((store) => store.currentUser.playlists);
-  console.log(playlists , " playlists");
+  const { items } = useSelector((store) => store.currentUser.playlists);
+  // console.log(items, " playlists");
 
+  const featuredPlaylists = useSelector((store) => store.moreData.featuredPlaylists)
+  console.log(featuredPlaylists, " featuredPlaylists");
 
 
 
@@ -28,14 +31,15 @@ const Home = () => {
   const fetchUserInfo = () => {
     if (token !== null) {
       console.log(token)
-      Dispatch(handleAsync(token))
+      Dispatch(handleAsyncUser(token))
+      Dispatch(handleAsyncMoreData(token))
     } else {
       console.log("login");
     }
   }
 
 
-  
+
 
   useEffect(() => {
 
@@ -113,45 +117,13 @@ const Home = () => {
               <hr style={{ width: "23.5vh", color: "#dfdfdf" }} />
 
               <div className={`${module.main_logos} ${module.playlists} `}>
-                <div className={`${module.main_list} ${module.playlist_name}`}>
-                  <h6>My Playlist#4</h6>
-                </div>
+                {items?.map((e, i) => (
+                  <div key={i} className={`${module.main_list} ${module.playlist_name}`}>
+                    <h6>{e.name}</h6>
+                  </div>
+                ))}
 
-                <div className={`${module.main_list} ${module.playlist_name}`}>
-                  <h6>Lofi</h6>
-                </div>
 
-                <div className={`${module.main_list} ${module.playlist_name}`}>
-                  <h6>Electro Chill 2023</h6>
-                </div>
-
-                <div className={`${module.main_list} ${module.playlist_name}`}>
-                  <h6>lofi beats / chillhop</h6>
-                </div>
-
-                <div className={`${module.main_list} ${module.playlist_name}`}>
-                  <h6>Remix 2023 🌟 House...</h6>
-                </div>
-
-                <div className={`${module.main_list} ${module.playlist_name}`}>
-                  <h6>Remix 2023 🌟 House...</h6>
-                </div>
-
-                <div className={`${module.main_list} ${module.playlist_name}`}>
-                  <h6>Remix 2023 🌟 House...</h6>
-                </div>
-
-                <div className={`${module.main_list} ${module.playlist_name}`}>
-                  <h6>Remix 2023 🌟 House...</h6>
-                </div>
-
-                <div className={`${module.main_list} ${module.playlist_name}`}>
-                  <h6>Remix 2023 🌟 House...</h6>
-                </div>
-
-                <div className={`${module.main_list} ${module.playlist_name}`}>
-                  <h6>Remix 2023 🌟 House...</h6>
-                </div>
               </div>
               <div className={`${module.install}`}>
                 <svg role="img" height="24" width="24" fill='white' aria-hidden="true" viewBox="0 0 24 24" data-encore-id="icon" className="Svg-sc-ytk21e-0 uPxdw"><path d="M12 3a9 9 0 100 18 9 9 0 000-18zM1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12z"></path><path d="M12 6.05a1 1 0 011 1v7.486l1.793-1.793a1 1 0 111.414 1.414L12 18.364l-4.207-4.207a1 1 0 111.414-1.414L11 14.536V7.05a1 1 0 011-1z"></path></svg>
@@ -187,7 +159,7 @@ const Home = () => {
 
             <div className={`${module.shows_to_try}`}>
               <div className="shows">
-                <Card showsToTry="Shows to try" />
+                <Card showsToTry="Featured Playlists" data={featuredPlaylists ? featuredPlaylists : ""} />
               </div>
             </div>
 

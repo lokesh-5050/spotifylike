@@ -7,7 +7,7 @@ import module from './Navbar.module.css'
 import { useSelector } from 'react-redux'
 const Navbar = ({ navColor }) => {
     const user = useSelector((store) => store.currentUser.currentUser);
-    console.log(user, " user");
+    // console.log(user, " user");  
     const [opt, setOpt] = useState(false)
     const dropDownNav = useRef(null)
     const userActions = useRef(null)

@@ -21,11 +21,12 @@ export const CurrentUserSlice = createSlice({
         currenUserPlaylists: (state, actions) => {
             state.playlists = actions.payload
         }
+        
 
     },
 })
 
-export const handleAsync = (token) => (dispatch, prevState) => {
+export const handleAsyncUser = (token) => (dispatch, prevState) => {
 
     const fetchingUserInfo = async (token) => {
         let { data } = await spotifyAPi(`/me`, {
