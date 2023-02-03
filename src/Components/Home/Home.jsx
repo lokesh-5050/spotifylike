@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaHeart } from 'react-icons/fa'
 import Card from '../Cards/Card'
 import Footer from '../Footer/Footer'
@@ -6,7 +6,43 @@ import Navbar from '../Navbar/Navbar'
 import module from './Home.module.css'
 import ArtistCard from '../Cards/ArtistCard'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { handleAsync } from '../../store/SpotifyApi/CurrentUserApi'
 const Home = () => {
+
+
+  const user = useSelector((store) => store.currentUser.currentUser);
+  console.log(user, " user");
+
+  const playlists = useSelector((store) => store.currentUser.playlists);
+  console.log(playlists , " playlists");
+
+
+
+
+
+  const Dispatch = useDispatch()
+
+  const token = useSelector((store) => store.currentUser.token);
+  // console.log(token, " token");
+  const fetchUserInfo = () => {
+    if (token !== null) {
+      console.log(token)
+      Dispatch(handleAsync(token))
+    } else {
+      console.log("login");
+    }
+  }
+
+
+  
+
+  useEffect(() => {
+
+    fetchUserInfo()
+
+  }, [])
+
   return (
     <>
       <div className={`${module.warp}`}>
