@@ -1,10 +1,15 @@
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md'
 import { RiArrowDownSFill } from 'react-icons/ri'
 import { IoMdArrowDropup } from 'react-icons/io'
 import { Link, NavLink } from 'react-router-dom'
 import module from './Navbar.module.css'
+import { TokenContexts } from '../../Context/Token'
 const Navbar = () => {
+    const [token, setToken, navColor, setNavColor] = useContext(TokenContexts)
+    console.log(navColor);
+    setNavColor("")
+    setNavColor("#121212")
     const [opt, setOpt] = useState(false)
     const dropDownNav = useRef(null)
     const userActions = useRef(null)
@@ -21,9 +26,14 @@ const Navbar = () => {
     const on = module.on
     const off = module.inactive
 
+    const handleLogout = () => {
+        window.localStorage.removeItem("token")
+        setToken("")
+    }
+
     return (
         <>
-            <div className={`${module.nav}`}>
+            <div className={`${module.nav}`} style={{ backgroundColor: navColor }}>
                 <div className={`${module.left}`}>
                     <div className={`${module.navigations}`}>
 
@@ -111,11 +121,12 @@ const Navbar = () => {
                                     <h6>Settings</h6>
                                 </div>
                             </Link>
-                            <Link to='/logout'>
+                            <a onClick={handleLogout}>
+
                                 <div className={`${module.list}`} >
                                     <h6>Logout</h6>
                                 </div>
-                            </Link>
+                            </a>
                         </div>
                     </div>
                 </div>

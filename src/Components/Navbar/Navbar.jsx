@@ -6,10 +6,11 @@ import { Link } from 'react-router-dom'
 import module from './Navbar.module.css'
 import { useSelector } from 'react-redux'
 import { TokenContexts } from '../../Context/Token'
-const Navbar = ({ navColor }) => {
+const Navbar = () => {
 
-    const [token , setToken] = useContext(TokenContexts)
-
+    const [token , setToken , navColor ,setNavColor] = useContext(TokenContexts)
+    setNavColor("")
+    setNavColor("#02071F")
     const user = useSelector((store) => store.currentUser.currentUser);
     // console.log(user, " user");  
     const [opt, setOpt] = useState(false)
@@ -31,7 +32,7 @@ const Navbar = ({ navColor }) => {
     }
     return (
         <>
-            <div className={`${module.nav}`} style={{ backgroundColor: navColor }}>
+            <div className={`${module.nav}`} style={{backgroundColor:navColor}}>
                 <div className={`${module.left}`}>
                     <div className={`${module.navigations}`}>
 
