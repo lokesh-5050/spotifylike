@@ -27,22 +27,24 @@ const Home = () => {
   // console.log(featuredPlaylists, " featuredPlaylists");
 
   const newReleases = useSelector((store) => store.moreData.newReleases)
-  console.log(newReleases, " newReleases");
+  // console.log(newReleases, " newReleases");
 
   const tracks = useSelector((store) => store.moreData.severalTracks)
-  console.log(tracks, " tracks");
+  // console.log(tracks, " tracks");
 
   const artists = useSelector((store) => store.moreData.Artists)
-  console.log(artists, " artists");
+  // console.log(artists, " artists");
 
   const Recommendations = useSelector((store) => store.moreData.Recommendations)
-  console.log(Recommendations, " Recommendations");
+  // console.log(Recommendations, " Recommendations");
 
   const Rock = useSelector((store) => store.moreData.Rock)
-  console.log(Rock, " Recommendations");
+  // console.log(Rock, " Recommendations");
 
   const Gaming = useSelector((store) => store.moreData.Gaming)
-  console.log(Gaming, " Recommendations");
+  // console.log(Gaming, " Recommendations");
+
+  const Categories = useSelector((store)=> store.moreData.categories)
 
 
 

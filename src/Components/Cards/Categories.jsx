@@ -1,115 +1,28 @@
 import React from 'react'
 import module from './Categories.module.css'
 import PlaylistCard from './PlaylistCard'
+import { generate } from 'random-hex'
+import { useSelector } from 'react-redux'
 const Categories = () => {
+
+  //categories data from redux
+  const data = useSelector((store) => store.moreData.categories)
+  console.log(data);
+
+  console.log(generate());
   return (
     <>
       <div className={`${module.categories}`}>
 
-        <div className={`${module.categorie}`}>
-          <h4>Podcasts</h4>
-          <div className={`${module.cover}`}>
-            <img src="https://t.scdn.co/images/ea364e99656e46a096ea1df50f581efe" alt="" />
+        {data?.map((e, i) => (
+          <div className={`${module.categorie}`} style={{ backgroundColor: generate() }}>
+            <h4>{e.name}</h4>
+            <div className={`${module.cover}`}>
+              <img src={e.icons[0].url} alt="" />
+            </div>
           </div>
-        </div>
+        ))}
 
-        <div className={`${module.categorie}`}>
-          <h4>Podcasts</h4>
-          <div className={`${module.cover}`}>
-            <img src="https://t.scdn.co/images/ea364e99656e46a096ea1df50f581efe" alt="" />
-          </div>
-        </div>
-
-        <div className={`${module.categorie}`}>
-          <h4>Podcasts</h4>
-          <div className={`${module.cover}`}>
-            <img src="https://t.scdn.co/images/ea364e99656e46a096ea1df50f581efe" alt="" />
-          </div>
-        </div>
-
-        <div className={`${module.categorie}`}>
-          <h4>Podcasts</h4>
-          <div className={`${module.cover}`}>
-            <img src="https://t.scdn.co/images/ea364e99656e46a096ea1df50f581efe" alt="" />
-          </div>
-        </div>
-
-        <div className={`${module.categorie}`}>
-          <h4>Podcasts</h4>
-          <div className={`${module.cover}`}>
-            <img src="https://t.scdn.co/images/ea364e99656e46a096ea1df50f581efe" alt="" />
-          </div>
-        </div>
-
-        <div className={`${module.categorie}`}>
-          <h4>Podcasts</h4>
-          <div className={`${module.cover}`}>
-            <img src="https://t.scdn.co/images/ea364e99656e46a096ea1df50f581efe" alt="" />
-          </div>
-        </div>
-
-        <div className={`${module.categorie}`}>
-          <h4>Podcasts</h4>
-          <div className={`${module.cover}`}>
-            <img src="https://t.scdn.co/images/ea364e99656e46a096ea1df50f581efe" alt="" />
-          </div>
-        </div>
-
-        <div className={`${module.categorie}`}>
-          <h4>Podcasts</h4>
-          <div className={`${module.cover}`}>
-            <img src="https://t.scdn.co/images/ea364e99656e46a096ea1df50f581efe" alt="" />
-          </div>
-        </div>
-
-        <div className={`${module.categorie}`}>
-          <h4>Podcasts</h4>
-          <div className={`${module.cover}`}>
-            <img src="https://t.scdn.co/images/ea364e99656e46a096ea1df50f581efe" alt="" />
-          </div>
-        </div>
-
-        <div className={`${module.categorie}`}>
-          <h4>Podcasts</h4>
-          <div className={`${module.cover}`}>
-            <img src="https://t.scdn.co/images/ea364e99656e46a096ea1df50f581efe" alt="" />
-          </div>
-        </div>
-
-        <div className={`${module.categorie}`}>
-          <h4>Podcasts</h4>
-          <div className={`${module.cover}`}>
-            <img src="https://t.scdn.co/images/ea364e99656e46a096ea1df50f581efe" alt="" />
-          </div>
-        </div>
-
-        <div className={`${module.categorie}`}>
-          <h4>Podcasts</h4>
-          <div className={`${module.cover}`}>
-            <img src="https://t.scdn.co/images/ea364e99656e46a096ea1df50f581efe" alt="" />
-          </div>
-        </div>
-
-        <div className={`${module.categorie}`}>
-          <h4>Podcasts</h4>
-          <div className={`${module.cover}`}>
-            <img src="https://t.scdn.co/images/ea364e99656e46a096ea1df50f581efe" alt="" />
-          </div>
-        </div>
-
-        <div className={`${module.categorie}`}>
-          <h4>Podcasts</h4>
-          <div className={`${module.cover}`}>
-            <img src="https://t.scdn.co/images/ea364e99656e46a096ea1df50f581efe" alt="" />
-          </div>
-        </div>
-
-        <div className={`${module.categorie}`}>
-          <h4>Podcasts</h4>
-          <div className={`${module.cover}`}>
-            <img src="https://t.scdn.co/images/ea364e99656e46a096ea1df50f581efe" alt="" />
-          </div>
-        </div>
 
       </div>
     </>

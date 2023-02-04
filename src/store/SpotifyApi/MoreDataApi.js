@@ -7,9 +7,10 @@ const initialState = {
     newReleases: [],
     severalTracks: [],
     Artists: [],
-    Recommendations:[],
-    Rock:[],
-    Gaming:[],
+    Recommendations: [],
+    Rock: [],
+    Gaming: [],
+    OnSearch: []
 
 }
 
@@ -32,14 +33,17 @@ export const MoreDataSlice = createSlice({
         getArtists: (state, actions) => {
             state.Artists = actions.payload
         },
-        getRecommendations : (state,actions) =>{
+        getRecommendations: (state, actions) => {
             state.Recommendations = actions.payload
         },
-        getRock: (state,actions) =>{
+        getRock: (state, actions) => {
             state.Rock = actions.payload
         },
-        getGaming: (state,actions) =>{
+        getGaming: (state, actions) => {
             state.Gaming = actions.payload
+        },
+        getSearches: (state, actions) => {
+            state.OnSearch = actions.payload
         }
 
     },
@@ -56,14 +60,7 @@ export const handleAsyncMoreData = (token, limit) => (dispatch, prevState) => {
         // console.log(data + " featured");
         await dispatch(getFeaturedPlaylists(data.playlists.items))
 
-        let categories = await spotifyAPi(`/browse/categories`, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            },
-        })
 
-        // console.log(categories.data.categories.items, " categories");
-        await dispatch(getCategories(categories.data.categories.items))
 
         let newreleases = await spotifyAPi(`/browse/new-releases?country=SE&limit=${limit}&offset=0`, {
             headers: {
@@ -136,8 +133,25 @@ export const handleAsyncMoreData = (token, limit) => (dispatch, prevState) => {
     moreInfo(token)
 
 
+
+
 }
 
-export const { getFeaturedPlaylists, getCategories, getNewReleases, getSeveralTracks, getArtists ,getRecommendations ,getRock,getGaming } = MoreDataSlice.actions
+export const handleCategories = (token) => async (dispatch, prevState) => {
+    let categories = await spotifyAPi(`/browse/categories`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+    })
+
+    // console.log(categories.data.categories.items, " categories");
+    await dispatch(getCategories(categories.data.categories.items))
+}
+
+export const handleSearch = (token, limit, query) => async (dispatch, prevState) => {
+    let { data } = await spotifyAPi(`/search?q=${query}&type=track&market=ES&limit=20&offset=0`)
+}
+
+export const { getFeaturedPlaylists, getCategories, getNewReleases, getSeveralTracks, getArtists, getRecommendations, getRock, getGaming } = MoreDataSlice.actions
 
 export default MoreDataSlice.reducer;

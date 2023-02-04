@@ -21,8 +21,11 @@ const Homepage = () => {
 
     useEffect(() => {
         let token = window.localStorage.getItem("token")
-        if (token) validateUser(token)
-        console.log("token not found");
+        if (token) {
+            validateUser(token)
+        } else {
+            console.log("token not found");
+        }
     }, [token])
 
     return (
