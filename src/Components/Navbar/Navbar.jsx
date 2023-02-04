@@ -1,11 +1,15 @@
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md'
 import { RiArrowDownSFill } from 'react-icons/ri'
 import { IoMdArrowDropup } from 'react-icons/io'
 import { Link } from 'react-router-dom'
 import module from './Navbar.module.css'
 import { useSelector } from 'react-redux'
+import { TokenContexts } from '../../Context/Token'
 const Navbar = ({ navColor }) => {
+
+    const [token , setToken] = useContext(TokenContexts)
+
     const user = useSelector((store) => store.currentUser.currentUser);
     // console.log(user, " user");  
     const [opt, setOpt] = useState(false)
@@ -19,6 +23,11 @@ const Navbar = ({ navColor }) => {
             userActions.current.style.visibility = "hidden"
             setOpt(!opt)
         }
+    }
+
+    const handleLogout = ()=>{
+        window.localStorage.removeItem("token")
+        setToken("")
     }
     return (
         <>
@@ -81,11 +90,14 @@ const Navbar = ({ navColor }) => {
                                     <h6>Settings</h6>
                                 </div>
                             </Link>
-                            <Link to='/logout'>
+                            {/* <Link onClick={} to='/logout'> */}
+                                <a onClick={handleLogout}>
+
                                 <div className={`${module.list}`} >
                                     <h6>Logout</h6>
                                 </div>
-                            </Link>
+                                </a>
+                            {/* </Link> */}
                         </div>
                     </div>
                 </div>

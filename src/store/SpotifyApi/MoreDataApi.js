@@ -7,7 +7,10 @@ const initialState = {
     newReleases: [],
     severalTracks: [],
     Artists: [],
-    Recommendations:[]   
+    Recommendations:[],
+    Rock:[],
+    Gaming:[],
+
 }
 
 export const MoreDataSlice = createSlice({
@@ -31,6 +34,12 @@ export const MoreDataSlice = createSlice({
         },
         getRecommendations : (state,actions) =>{
             state.Recommendations = actions.payload
+        },
+        getRock: (state,actions) =>{
+            state.Rock = actions.payload
+        },
+        getGaming: (state,actions) =>{
+            state.Gaming = actions.payload
         }
 
     },
@@ -89,11 +98,37 @@ export const handleAsyncMoreData = (token, limit) => (dispatch, prevState) => {
             },
         })
 
-        console.log(recomanded.data.tracks, " recomanded");
+        // console.log(recomanded.data.tracks, " recomanded");
         // console.log(recomanded.data.seeds, " recomanded");
         //has previe_url
         await dispatch(getRecommendations(recomanded.data.tracks))
 
+
+        //rock
+        //so much tracks in it
+        let rock = await spotifyAPi(`/browse/categories/0JQ5DAqbMKFDXXwE9BDJAr/playlists?country=SE&limit=5&offset=0`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+        })
+
+        console.log(rock.data.playlists.items, " rock");
+        // console.log(rock.data.seeds, " rock");
+        //has previe_url
+        await dispatch(getRock(rock.data.playlists.items))
+
+        //gaming
+        //so much tracks in it
+        let gaming = await spotifyAPi(`/browse/categories/0JQ5DAqbMKFDXXwE9BDJAr/playlists?country=SE&limit=5&offset=0`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+        })
+
+        console.log(gaming.data.playlists.items, " gaming");
+        // console.log(gaming.data.seeds, " gaming");
+        //has previe_url
+        await dispatch(getGaming(gaming.data.playlists.items))
 
 
 
@@ -103,6 +138,6 @@ export const handleAsyncMoreData = (token, limit) => (dispatch, prevState) => {
 
 }
 
-export const { getFeaturedPlaylists, getCategories, getNewReleases, getSeveralTracks, getArtists ,getRecommendations } = MoreDataSlice.actions
+export const { getFeaturedPlaylists, getCategories, getNewReleases, getSeveralTracks, getArtists ,getRecommendations ,getRock,getGaming } = MoreDataSlice.actions
 
 export default MoreDataSlice.reducer;

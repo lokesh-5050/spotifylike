@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { FaHeart } from 'react-icons/fa'
 import Card from '../Cards/Card'
 import Footer from '../Footer/Footer'
@@ -9,14 +9,19 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { handleAsync, handleAsyncUser } from '../../store/SpotifyApi/CurrentUserApi'
 import { handleAsyncMoreData } from '../../store/SpotifyApi/MoreDataApi'
+import { TokenContexts } from '../../Context/Token'
 const Home = () => {
-
+  const [token, setToken] = useContext(TokenContexts)
   const [minLimitHome, setminLimitHome] = useState(5)
+
+  const id = useSelector((store) => store.currentUser.UserId)
+
+
   const user = useSelector((store) => store.currentUser.currentUser);
-  // console.log(user, " user");
+  console.log(user, " user");
 
   const { items } = useSelector((store) => store.currentUser.playlists);
-  // console.log(items, " playlists");
+  console.log(items, " playlists");
 
   const featuredPlaylists = useSelector((store) => store.moreData.featuredPlaylists)
   // console.log(featuredPlaylists, " featuredPlaylists");
@@ -29,37 +34,35 @@ const Home = () => {
 
   const artists = useSelector((store) => store.moreData.Artists)
   console.log(artists, " artists");
-  
+
   const Recommendations = useSelector((store) => store.moreData.Recommendations)
   console.log(Recommendations, " Recommendations");
 
+  const Rock = useSelector((store) => store.moreData.Rock)
+  console.log(Rock, " Recommendations");
 
+  const Gaming = useSelector((store) => store.moreData.Gaming)
+  console.log(Gaming, " Recommendations");
 
 
 
 
   const Dispatch = useDispatch()
 
-  const token = useSelector((store) => store.currentUser.token);
-  // console.log(token, " token");
+  const tokenFromRedux = useSelector((store) => store.currentUser.token);
+  // console.log(tokenFromRedux, " token");
   const fetchUserInfo = () => {
-    if (token !== null) {
-      console.log(token)
-      Dispatch(handleAsyncUser(token))
-      Dispatch(handleAsyncMoreData(token, minLimitHome))
-    } else {
-      console.log("login");
-    }
+    console.log(token)
+    Dispatch(handleAsyncUser(token))
+    Dispatch(handleAsyncMoreData(token, minLimitHome))
   }
 
 
-
-
   useEffect(() => {
-
-    fetchUserInfo()
-
-  }, [])
+    let token = window.localStorage.getItem("token")
+    if (token) fetchUserInfo(token)
+    console.log("Session Expired");
+  }, [token])
 
   return (
     <>
@@ -191,15 +194,29 @@ const Home = () => {
 
             <div className={`${module.shows_to_try}`}>
               <div className="shows">
-                <ArtistCard artists='Artists' data={artists}/>
+                <Card Recommanded='Recommanded' data={Recommendations ? Recommendations : ""} />
+              </div>
+            </div>
+
+
+            <div className={`${module.shows_to_try}`}>
+              <div className="shows">
+                <Card Gaming='Gaming Playlists' data={Gaming ? Gaming : ""} />
               </div>
             </div>
 
             <div className={`${module.shows_to_try}`}>
               <div className="shows">
-                <Card Recommanded='Recommanded' data={Recommendations ? Recommendations : ""}/>
+                <ArtistCard artists='Artists' data={artists} />
               </div>
             </div>
+
+            <div className={`${module.shows_to_try}`}>
+              <div className="shows">
+                <Card Rock="Rock Playlists" data={Rock ? Rock : ""} />
+              </div>
+            </div>
+
 
             {/* ... */}
           </div>
