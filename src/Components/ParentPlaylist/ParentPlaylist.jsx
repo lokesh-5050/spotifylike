@@ -8,8 +8,13 @@ import module from './ParentPlaylist.module.css'
 import { TbNumber1 } from 'react-icons/tb'
 import { BsPlayFill } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const ParentPlaylist = () => {
+
+    const SearchResults = useSelector((store) => store.moreData.OnSearch)
+
+
     const [showPlayOnHover, setShowPlayOnHover] = useState(false)
     const playRef = useRef(null)
     const showPlayBtn = (e) => {
@@ -45,13 +50,30 @@ const ParentPlaylist = () => {
                             </div>
                         </div>
                         <div className={`${module.lists}`}>
-                            <div className={`${module.list}`}>
+                            {SearchResults ? SearchResults.map((e, i) => (
+                                <div className={`${module.list}`}>
+                                    <div className={`${module.left} ${module.mainLeftSize}`}>
+                                        <div onMouseEnter={() => setShowPlayOnHover(true)} onMouseLeave={() => setShowPlayOnHover(false)} className="hoverControl">
+                                            {showPlayOnHover ? (<Link to='play-this'><BsPlayFill color='#dadada' style={{ marginTop: '-6px' }} /></Link>) : (<h6>{i + 1}</h6>)}
+                                        </div>
+                                        <img src={e.album.images[0].url} alt="" />
+                                        <div className={`${module.musicDesc}`}>
+                                            <h5>{e.name}</h5>
+                                            <h6>{e.artists[0].name}</h6>
+                                        </div>
+                                    </div>
+                                    <div className={`${module.left} ${module.album}`}>
+                                        <h6>{e.album.name}</h6>
+                                    </div>
+                                    <div className={`${module.left}`}>
+                                    </div>
+                                    <div className={`${module.left}`}>
+                                        <h6>{Math.floor(e.duration_ms / 60000).toFixed(2)}</h6>
+                                    </div>
+                                </div>
+                            )) : (<div className={`${module.list}`}>
                                 <div className={`${module.left} ${module.mainLeftSize}`}>
-                                    {/* <h6 >1</h6> */}
-                                    {/* <h6 ref={playRef} onMouseEnter={showPlayBtn} className={`${module.showPlay}`}><TbNumber1 /></h6>
-                                     */}
                                     <div onMouseEnter={() => setShowPlayOnHover(true)} onMouseLeave={() => setShowPlayOnHover(false)} className="hoverControl">
-
                                         {showPlayOnHover ? (<Link to='play-this'><BsPlayFill color='#dadada' style={{ marginTop: '-6px' }} /></Link>) : (<h6><TbNumber1 /></h6>)}
                                     </div>
                                     <img src="https://i.scdn.co/image/ab67616d00004851e1660f0eff9c7330b1d99084" alt="" />
@@ -64,13 +86,12 @@ const ParentPlaylist = () => {
                                     <h6>Ferrari</h6>
                                 </div>
                                 <div className={`${module.left}`}>
-
                                 </div>
                                 <div className={`${module.left}`}>
                                     <h6>3:06</h6>
                                 </div>
+                            </div>)}
 
-                            </div>
 
 
                         </div>

@@ -148,10 +148,18 @@ export const handleCategories = (token) => async (dispatch, prevState) => {
     await dispatch(getCategories(categories.data.categories.items))
 }
 
-export const handleSearch = (token, limit, query) => async (dispatch, prevState) => {
-    let { data } = await spotifyAPi(`/search?q=${query}&type=track&market=ES&limit=20&offset=0`)
+export const handleSearch = (token, query) => async (dispatch, prevState) => {
+    console.log(query , " query");
+    let data = await spotifyAPi(`/search?q=${query}&type=track&market=ES&limit=20&offset=0`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+    })
+    console.log(data.data.tracks.items, " by search");
+    dispatch(getSearches(data.data.tracks.items))
 }
 
-export const { getFeaturedPlaylists, getCategories, getNewReleases, getSeveralTracks, getArtists, getRecommendations, getRock, getGaming } = MoreDataSlice.actions
+export const { getFeaturedPlaylists, getCategories,
+    getNewReleases, getSeveralTracks, getArtists, getRecommendations, getRock, getGaming, getSearches } = MoreDataSlice.actions
 
 export default MoreDataSlice.reducer;

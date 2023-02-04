@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import module from './Navbar.module.css'
 import { RiSearchLine } from 'react-icons/ri'
 import { TokenContexts } from '../../Context/Token'
-const Navbar = ({handleSearchBar}) => {
+const Navbar = ({handleSearchBar , searchText}) => {
     const [token, setToken, navColor, setNavColor] = useContext(TokenContexts)
     setNavColor("")
     setNavColor("#121212")
@@ -45,7 +45,7 @@ const Navbar = ({handleSearchBar}) => {
                     <div className={`${module.search}`}>
                         <form className={`${module.searchBar}`}>
                             <RiSearchLine fontSize='1.5vw' fill='#000' color='#000' />
-                            <input type="text" onChange={handleSearchBar} placeholder='What do you want to listen to' />
+                            <input value={searchText} type="text" onChange={handleSearchBar} placeholder='What do you want to listen to' />
                         </form>
                     </div>
 

@@ -12,11 +12,14 @@
 
 .right {
   width: 84vmax;
-  
-  /* padding-left: 3vmax; */
-  padding-bottom: 13vmax;
+  padding-top: 1vmax;
   color: #fff;
+  background-color: rgb(18, 19, 19);
+  overflow: scroll;
 
+}
+.right::-webkit-scrollbar{
+  display: none;
 }
 
 .nav {
@@ -32,6 +35,7 @@
 
 .searchFor {
   padding-top: 7vmax;
+  height: fit-content;
 }
 
 .searchFor>h3 {

@@ -9,7 +9,6 @@
     padding-top: 2vmax;
     width: inherit;
     height: 40vh;
-   
 }
 
 .interactions {
@@ -21,10 +20,9 @@
 
 .songCollections {
     width: 82vmax;
-    height: 40vh;
-   
+    /* height: 40vh; */
     padding: 2vh 2vmax;
-
+    /* background-color: red; */
 }
 
 .topBar {

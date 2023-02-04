@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Footer from '../../Components/Footer/Footer'
 import NavbarSearch from '../../Components/Navbar/NavbarSearch'
 import Categories from '../../Components/Cards/Categories'
@@ -7,11 +7,12 @@ import module from './SearchPage.module.css'
 import { TokenContexts } from '../../Context/Token'
 import { checkIsTokenValid, handleAsyncUser } from '../../store/SpotifyApi/CurrentUserApi'
 import { useDispatch, useSelector } from 'react-redux'
-import Login from '../../Components/Login/Login'
+import ParentPlaylist from '../../Components/ParentPlaylist/ParentPlaylist'
 import { useNavigate } from 'react-router-dom'
-import { handleCategories } from '../../store/SpotifyApi/MoreDataApi'
+import { handleCategories, handleSearch } from '../../store/SpotifyApi/MoreDataApi'
 const SearchPage = () => {
-    
+
+    const [searchText, setSearchText] = useState('')
 
     const [token, setToken] = useContext(TokenContexts)
     const id = useSelector((store) => store.currentUser.UserId)
@@ -42,7 +43,13 @@ const SearchPage = () => {
 
 
     const handleSearchBar = (e) => {
-        console.log(e)
+        setSearchText(e.target.value)
+        console.log(e.target.value)
+        if (e.target.value.length > 0) {
+            Dispatch(handleSearch(token, e.target.value))
+        } else {
+            console.log("lenght 0")
+        }
     }
 
     return (
@@ -55,11 +62,13 @@ const SearchPage = () => {
                 <div className={`${module.right}`}>
 
                     <div className={`${module.nav}`}>
-                        <NavbarSearch handleSearchBar={handleSearchBar} />
+                        <NavbarSearch handleSearchBar={handleSearchBar} searchText={searchText} />
                     </div>
                     <div className={`${module.searchFor}`}>
-                        <h3>Browse all</h3>
-                        <Categories  />
+                        {!searchText.length > 0 ? (<h3>Browse all</h3> && <Categories />) : (<ParentPlaylist />)}
+                        {/* <h3>Browse all</h3> */}
+                        {/* <Categories /> */}
+                        
                     </div>
                     <hr />
                 </div>
