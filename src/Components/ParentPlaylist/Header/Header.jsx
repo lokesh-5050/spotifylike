@@ -4,7 +4,7 @@ import module from '../Header/Header.module.css'
 
 const Header = () => {
   const SearchResults = useSelector((store) => store.moreData.OnSearch)
-  console.log(SearchResults[0])
+  // console.log(SearchResults[0])
 
 
 

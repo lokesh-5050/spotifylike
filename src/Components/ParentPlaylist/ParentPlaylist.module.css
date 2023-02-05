@@ -61,6 +61,33 @@
     justify-content: space-between;
 
 }
+.hoverControl{
+    /* background-color: yellow; */
+    width: 1vmax;
+}
+
+.list:hover {
+    background-color: rgb(41, 40, 40);
+    cursor: pointer;
+}
+
+.box>.play {
+    display: none;
+}
+
+.list:hover .count {
+    display: none;
+}
+
+.list:hover .play {
+    display: initial;
+    font-size: 1.2vmax;
+    /* background-color: red; */
+    margin-left: -0.3vmax;
+    /* margin-right: 1vmax; */
+}
+
+
 
 .musicDesc>h5 {
     font-size: 1.2vmax;
