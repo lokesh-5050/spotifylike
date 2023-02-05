@@ -57,13 +57,6 @@ const ParentPlaylist = () => {
         }
     }
 
-    // useEffect(() => {
-    //     console.log("inside useEffect");
-    //     // musicRef.current.pause()
-    // }, [isPlaying])
-
-
-
 
     return (
         <>
