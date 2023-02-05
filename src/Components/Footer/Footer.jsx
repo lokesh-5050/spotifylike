@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import module from './Footer.module.css'
 import { FaHeart } from 'react-icons/fa'
 import { CgInpicture } from 'react-icons/cg'
@@ -13,10 +13,19 @@ import { IoPause } from 'react-icons/io5'
 import { TokenContexts } from '../../Context/Token'
 
 const Footer = () => {
-    const [token, setToken, navColor, setNavColor , isPlaying , setIsPlaying , currentSongDets , setCurrentSongDets] = useContext(TokenContexts)
+    const [token, setToken, navColor, setNavColor, isPlaying, setIsPlaying, currentSongDets, setCurrentSongDets] = useContext(TokenContexts)
     console.log(currentSongDets);
 
+    const musicRef = useRef(null)
 
+    useEffect(() => {
+        if (isPlaying === true) {
+            musicRef.current.play()
+        } else {
+            musicRef.current.pause()
+        }
+        // musicRef.current.play()
+    }, [isPlaying])
 
     return (
         <>
@@ -27,8 +36,8 @@ const Footer = () => {
                         {/* <img src="https://i.scdn.co/image/ab67616d0000485100c7eee37117195757758943" alt="" /> */}
                     </div>
                     <div className={`${module.title}`}>
-                        <h6>{currentSongDets.name ||  "Armani"} <br />
-                            <span>{currentSongDets.artist ||  "Zack Knight, Amar Sandhu"}</span></h6>
+                        <h6>{(currentSongDets.name.slice(0, 10) + "...") || "Armani"} <br />
+                            <span>{currentSongDets.artist || "Zack Knight, Amar Sandhu"}</span></h6>
 
                     </div>
                     <div className={`${module.actions}`}>
@@ -43,8 +52,8 @@ const Footer = () => {
                         <BiShuffle fontSize='1.8vw' />
                         <GiPreviousButton fontSize='1.8vw' />
                         <div className={`${module.box}`}>
-                            {isPlaying ? <IoPause fontSize='1.3vw' /> : <BsFillPlayFill onClick={()=> setIsPlaying(!isPlaying)} fontSize='1.5vw' />}
-                            <audio src={currentSongDets.src || ""} style={{display:'none'}}></audio>
+                            {isPlaying === true ? <IoPause onClick={() => setIsPlaying(!isPlaying)} fontSize='1.3vw' /> : <BsFillPlayFill onClick={() => setIsPlaying(!isPlaying)} fontSize='1.5vw' />}
+                            <audio ref={musicRef} src={currentSongDets.src || ""} style={{ display: 'none' }}></audio>
                         </div>
                         <GiNextButton fontSize='1.8vw' />
                         <FiRepeat fontSize='1.5vw' />

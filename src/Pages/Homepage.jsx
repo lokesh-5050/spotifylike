@@ -30,7 +30,8 @@ const Homepage = () => {
 
     return (
         <>
-            {id && token ? <Home /> : <Login />}
+            {/* {id && token ? <Home /> : <Login />} */}
+            {token && id ? <Home /> : <Login />}
 
         </>
 

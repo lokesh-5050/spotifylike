@@ -37,29 +37,29 @@ const ParentPlaylist = () => {
         const imgUrl = e.target.parentElement.parentElement.parentElement.parentElement.nextElementSibling.src
         const name = e.target.parentElement.parentElement.parentElement.parentElement.nextElementSibling.nextElementSibling.children[0].innerHTML
         const artist = e.target.parentElement.parentElement.parentElement.parentElement.nextElementSibling.nextElementSibling.children[0].innerHTML
-        if (e.target.classList[0] == "ri-play-fill" && !isPlaying) {
+        if (e.target.classList[0] === "ri-play-fill" && !isPlaying) {
             setCurrentSongDets({
                 src: songUrl,
                 img: imgUrl,
-                artist:artist,
-                name:name
+                artist: artist,
+                name: name
             })
-            e.target.parentElement.parentElement.nextElementSibling.play()
+            // e.target.parentElement.parentElement.nextElementSibling.play()
             e.target.classList.remove("ri-play-fill")
             e.target.classList.add("ri-pause-mini-fill")
-            setIsPlaying(!isPlaying)
-        } else if (e.target.classList[0] == "ri-pause-mini-fill" && isPlaying) {
+            setIsPlaying(true)
+        } else if (e.target.classList[0] === "ri-pause-mini-fill" && isPlaying) {
 
-            e.target.parentElement.parentElement.nextElementSibling.pause()
+            // e.target.parentElement.parentElement.nextElementSibling.pause()
             e.target.classList.remove("ri-pause-mini-fill")
             e.target.classList.add("ri-play-fill")
-            setIsPlaying(!isPlaying)
+            setIsPlaying(false)
         }
     }
 
     // useEffect(() => {
     //     console.log("inside useEffect");
-    //     musicRef.current.pause()
+    //     // musicRef.current.pause()
     // }, [isPlaying])
 
 
