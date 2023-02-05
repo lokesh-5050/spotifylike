@@ -7,14 +7,10 @@ import Header from './Header/Header'
 import module from './ParentPlaylist.module.css'
 import { TbNumber1 } from 'react-icons/tb'
 import { BsPlayFill } from 'react-icons/bs'
-import { TiMediaPause } from 'react-icons/ti'
-import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { TokenContexts } from '../../Context/Token'
 
 const ParentPlaylist = () => {
-
-
     const [token, setToken, navColor, setNavColor, isPlaying, setIsPlaying, currentSongDets, setCurrentSongDets] = useContext(TokenContexts)
     console.log(isPlaying, " isPlaying");
 
@@ -24,11 +20,6 @@ const ParentPlaylist = () => {
     const iconRef = useRef(null)
 
     const [showPlayOnHover, setShowPlayOnHover] = useState(false)
-    const playRef = useRef(null)
-    // const showPlayBtn = (e) => {
-    //     console.log(e);
-    // }
-
 
     const handleMusic = (e) => {
         // musicRef.current.pause()
@@ -57,14 +48,11 @@ const ParentPlaylist = () => {
         }
     }
 
-
     return (
         <>
             <div className={`${module.outlets}`}  >
                 <Header />
                 <div className={`${module.mainDiv}`}>
-
-
                     <div className={`${module.songCollections}`}>
                         <div className={`${module.interactions}`}>
                             <PlayBtn />
@@ -135,12 +123,6 @@ const ParentPlaylist = () => {
                                     <h6>3:06</h6>
                                 </div>
                             </div>)}
-
-
-                            
-
-
-
                         </div>
                     </div>
 

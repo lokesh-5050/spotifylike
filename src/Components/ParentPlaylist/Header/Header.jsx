@@ -6,8 +6,6 @@ const Header = () => {
   const SearchResults = useSelector((store) => store.moreData.OnSearch)
   // console.log(SearchResults[0])
 
-
-
   return (
     <>
 
@@ -24,7 +22,6 @@ const Header = () => {
             {SearchResults[0] ? SearchResults[0].popularity : "popularity : 100"}
             {SearchResults[0] ? "" : (<h4>Made for user.Spotify.id ᾉἆῈᾑ 50 songs, about 2 hr 15 min<span>and more</span></h4>)}
             {SearchResults[0] ? "" : (<h4>Tita Lau , Oliver Helends, Lazza <span>and more</span></h4>)}
-
           </div>
         </div>
       </div>

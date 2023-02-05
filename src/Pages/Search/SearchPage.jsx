@@ -70,7 +70,6 @@ const SearchPage = () => {
                         {/* <Categories /> */}
 
                     </div>
-                    <hr />
                 </div>
                 <div className={`${module.footer}`}>
                     <Footer />
