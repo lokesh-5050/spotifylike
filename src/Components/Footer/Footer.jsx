@@ -49,14 +49,14 @@ const Footer = () => {
                 <div className={`${module.controls}`}>
 
                     <div className={`${module.top}`}>
-                        <BiShuffle fontSize='1.8vw' />
-                        <GiPreviousButton fontSize='1.8vw' />
+                        <BiShuffle fontSize='1.8vw' style={{ cursor: 'pointer' }} />
+                        <GiPreviousButton fontSize='1.8vw' style={{ cursor: 'pointer' }} />
                         <div className={`${module.box}`}>
-                            {isPlaying === true ? <IoPause onClick={() => setIsPlaying(!isPlaying)} fontSize='1.3vw' /> : <BsFillPlayFill onClick={() => setIsPlaying(!isPlaying)} fontSize='1.5vw' />}
+                            {isPlaying === true ? <IoPause style={{ cursor: 'pointer' }} onClick={() => setIsPlaying(!isPlaying)} fontSize='1.3vw' /> : <BsFillPlayFill style={{ cursor: 'pointer' }} onClick={() => setIsPlaying(!isPlaying)} fontSize='1.5vw' />}
                             <audio ref={musicRef} src={currentSongDets.src || ""} style={{ display: 'none' }}></audio>
                         </div>
-                        <GiNextButton fontSize='1.8vw' />
-                        <FiRepeat fontSize='1.5vw' />
+                        <GiNextButton fontSize='1.8vw' style={{ cursor: 'pointer' }} />
+                        <FiRepeat fontSize='1.5vw' style={{ cursor: 'pointer' }} />
                     </div>
 
 
