@@ -44,7 +44,7 @@ const SearchPage = () => {
 
     const handleSearchBar = (e) => {
         setSearchText(e.target.value)
-        console.log(e.target.value)
+        // console.log(e.target.value)
         if (e.target.value.length > 0) {
             Dispatch(handleSearch(token, e.target.value))
         } else {

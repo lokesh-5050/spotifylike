@@ -82,13 +82,14 @@
 }
 
 .timeline:hover .time::-webkit-slider-thumb,
-.timmeline:hover .time::-webkit-slider-thumb{
+.timmeline:hover .time::-webkit-slider-thumb {
     opacity: 1;
 }
 
 .timeline>p {
     margin-top: 1vw;
 }
+
 
 .connect {
     width: 20vw;
@@ -117,7 +118,7 @@ input {
     accent-color: #fff;
 }
 
-.time::-webkit-slider-thumb{
+.time::-webkit-slider-thumb {
     opacity: 0;
 }
 
@@ -126,7 +127,6 @@ input {
     opacity: 1;
 }
 
-.time:hover{
+.time:hover {
     accent-color: rgb(3, 160, 3);
 }
-

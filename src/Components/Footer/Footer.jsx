@@ -14,19 +14,66 @@ import { TokenContexts } from '../../Context/Token'
 
 const Footer = () => {
     const [token, setToken, navColor, setNavColor, isPlaying, setIsPlaying, currentSongDets, setCurrentSongDets] = useContext(TokenContexts)
-    console.log(currentSongDets);
+    // console.log(currentSongDets);
 
     const musicRef = useRef(null)
+    const progBar = useRef(null)
+    const volRef = useRef(null)
+
+    const handleMusicBar = (e) => {
+        console.log(e.target.value);
+        setMusicPlayBack({
+            currentTime: e.target.value
+        })
+
+        musicRef.current.currentTime = e.target.value
+        // progBar.current.value = e.target.value
+    }
+
+    const [musicPlayBack, setMusicPlayBack] = useState({
+        currentTime: '',
+        maxDuartion: '',
+        volume:'1'
+    })
+
+    const updateRealTimeProgress = (music) => {
+        console.log("in loop");
+
+        setInterval(() => {
+            setMusicPlayBack({
+                currentTime: music.currentTime,
+                maxDuartion: music.duration
+            })
+        }, 1000);
+
+
+    }
+
+    // console.log(musicPlayBack);
+
 
     useEffect(() => {
+        console.log(musicRef);
         if (isPlaying === true) {
             musicRef.current.play()
+            if (musicRef.current.currentTime !== undefined) {
+                updateRealTimeProgress(musicRef.current)
+            }
         } else {
+            console.log("stopped ");
             musicRef.current.pause()
         }
         // musicRef.current.play()
     }, [isPlaying])
 
+
+    const handleVolume = (w) => {
+        console.log(w.target.value);
+        setMusicPlayBack({
+            volume:w.target.value
+        })
+        musicRef.current.volume = w.target.value
+    }
     return (
         <>
             <div className={`${module.footer}`}>
@@ -59,25 +106,22 @@ const Footer = () => {
                         <FiRepeat fontSize='1.5vw' style={{ cursor: 'pointer' }} />
                     </div>
 
-
                     <div className={`${module.timeline}`}>
-                        <p>0.13</p>
-                        <input type="range" className={`${module.time}`} />
-                        <p>2.32</p>
+                        <p>{Math.floor(musicPlayBack.currentTime).toFixed(2) || "00:00"} </p>
+
+                        <input ref={progBar} type="range" maxLength={29} min="0" step="0.1" value={Math.floor(musicPlayBack.currentTime)} max={29} onChange={handleMusicBar} className={`${module.time}`} />
+                        <p>{Math.floor(musicPlayBack.maxDuartion).toFixed(2) || "29:00"}</p>
                     </div>
 
                 </div>
 
                 <div className={`${module.song_info} ${module.connect}`}>
-
                     <HiQueueList />
-
                     <TbDevices2 />
                     <div className={`${module.volume}`}>
                         <HiSpeakerWave />
-                        <input type="range" className={`${module.time}`} />
+                        <input type="range" min="0" step="0.1" value={musicPlayBack.volume} max={5} ref={volRef} onChange={handleVolume} className={`${module.time}`} />
                     </div>
-
                 </div>
 
 

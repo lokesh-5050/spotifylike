@@ -58,13 +58,13 @@ export const handleAsyncUser = (token) => (dispatch, prevState) => {
 }
 
 export const checkIsTokenValid = (token) => async (dispatch, prevState) => {
-    console.log(token, " in valid fnc");
+    // console.log(token, " in valid fnc");
     let { data } = await spotifyAPi(`/me`, {
         headers: {
             Authorization: `Bearer ${token}`
         },
     })
-    console.log(data.id, " checkIsTokenValid");
+    // console.log(data.id, " checkIsTokenValid");
     await dispatch(getUserId(data.id))
 
 }
