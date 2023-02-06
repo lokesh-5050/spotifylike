@@ -11,9 +11,9 @@ import { handleAsync, handleAsyncUser } from '../../store/SpotifyApi/CurrentUser
 import { handleAsyncMoreData } from '../../store/SpotifyApi/MoreDataApi'
 import { TokenContexts } from '../../Context/Token'
 const Home = () => {
-  const [token, setToken] = useContext(TokenContexts)
+  const [token, setToken, navColor, setNavColor] = useContext(TokenContexts)
   const [minLimitHome, setminLimitHome] = useState(5)
-
+  setNavColor("#02071F")
   const id = useSelector((store) => store.currentUser.UserId)
 
 
@@ -44,7 +44,7 @@ const Home = () => {
   const Gaming = useSelector((store) => store.moreData.Gaming)
   // console.log(Gaming, " Recommendations");
 
-  const Categories = useSelector((store)=> store.moreData.categories)
+  const Categories = useSelector((store) => store.moreData.categories)
 
 
 

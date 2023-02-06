@@ -9,8 +9,7 @@ import { TokenContexts } from '../../Context/Token'
 const Navbar = () => {
 
     const [token , setToken , navColor ,setNavColor] = useContext(TokenContexts)
-    setNavColor("")
-    setNavColor("#02071F")
+    // setNavColor("#02071F")
     const user = useSelector((store) => store.currentUser.currentUser);
     // console.log(user, " user");  
     const [opt, setOpt] = useState(false)

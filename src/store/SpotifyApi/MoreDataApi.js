@@ -10,7 +10,8 @@ const initialState = {
     Recommendations: [],
     Rock: [],
     Gaming: [],
-    OnSearch: []
+    OnSearch: [],
+    SinglePlaylist: []
 
 }
 
@@ -44,6 +45,9 @@ export const MoreDataSlice = createSlice({
         },
         getSearches: (state, actions) => {
             state.OnSearch = actions.payload
+        },
+        getSingleplaylist: (state, actions) => {
+            state.SinglePlaylist = actions.payload
         }
 
     },
@@ -149,7 +153,7 @@ export const handleCategories = (token) => async (dispatch, prevState) => {
 }
 
 export const handleSearch = (token, query) => async (dispatch, prevState) => {
-    console.log(query , " query");
+    console.log(query, " query");
     let data = await spotifyAPi(`/search?q=${query}&type=track&market=ES&limit=20&offset=0`, {
         headers: {
             Authorization: `Bearer ${token}`
@@ -159,7 +163,19 @@ export const handleSearch = (token, query) => async (dispatch, prevState) => {
     dispatch(getSearches(data.data.tracks.items))
 }
 
+export const fetchSinglePLaylist = (token, id) => async (dispatch, prevS) => {
+    console.log("in single play fetch");
+    const {data} = await spotifyAPi(`playlists/${id}`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+    })
+
+    console.log(data);
+    dispatch(getSingleplaylist(data))
+}
+
 export const { getFeaturedPlaylists, getCategories,
-    getNewReleases, getSeveralTracks, getArtists, getRecommendations, getRock, getGaming, getSearches } = MoreDataSlice.actions
+    getNewReleases, getSeveralTracks, getArtists, getRecommendations, getRock, getGaming, getSearches, getSingleplaylist } = MoreDataSlice.actions
 
 export default MoreDataSlice.reducer;

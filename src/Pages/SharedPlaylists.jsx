@@ -7,15 +7,16 @@ import Navbar from '../Components/Navbar/Navbar'
 import Login from '../Components/Login/Login'
 import { useDispatch, useSelector } from 'react-redux'
 import { TokenContexts } from '../Context/Token'
-import { handleAsyncUser } from '../store/SpotifyApi/CurrentUserApi'
-const SharedPlaylists = ({ navColor }) => {
-
-    const [token, setToken] = useContext(TokenContexts)
+import { checkIsTokenValid } from '../store/SpotifyApi/CurrentUserApi'
+const SharedPlaylists = () => {
+    const [token, setToken, navColor ,setNavColor] = useContext(TokenContexts)
+    setNavColor("transparent")
     const id = useSelector((store) => store.currentUser.UserId)
 
-    const fetchUserInfo = () => {
+    const fetchUserInfo = (token) => {
         console.log(token)
-        Dispatch(handleAsyncUser(token))
+        setToken(token)
+        Dispatch(checkIsTokenValid(token))
     }
 
     const Dispatch = useDispatch()
@@ -29,8 +30,6 @@ const SharedPlaylists = ({ navColor }) => {
         } else {
             Navigate("/")
         }
-
-        console.log("Session Expired");
     }, [token])
 
 
@@ -43,7 +42,7 @@ const SharedPlaylists = ({ navColor }) => {
 
                 <div className={`${module.right}`}>
                     <div className={`${module.nav}`}>
-                        <Navbar navColor={navColor} />
+                        <Navbar />
                     </div>
                     <Outlet />
 

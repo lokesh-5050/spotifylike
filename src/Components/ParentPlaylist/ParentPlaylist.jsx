@@ -7,12 +7,24 @@ import Header from './Header/Header'
 import module from './ParentPlaylist.module.css'
 import { TbNumber1 } from 'react-icons/tb'
 import { BsPlayFill } from 'react-icons/bs'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { TokenContexts } from '../../Context/Token'
-
+import { useParams } from 'react-router-dom'
+import { fetchSinglePLaylist } from '../../store/SpotifyApi/MoreDataApi'
 const ParentPlaylist = () => {
+    const { id } = useParams()
+    console.log(id, "id");
+
+    //sp => single Playlist
+    const sP = useSelector((store) => store.moreData.SinglePlaylist)
+    console.log(sP.tracks);
+
+
+
     const [token, setToken, navColor, setNavColor, isPlaying, setIsPlaying, currentSongDets, setCurrentSongDets] = useContext(TokenContexts)
-    console.log(isPlaying, " isPlaying");
+    // console.log(isPlaying, " isPlaying");
+
+    const Dispatch = useDispatch()
 
     const SearchResults = useSelector((store) => store.moreData.OnSearch)
     const musicRef = useRef(null)
@@ -48,6 +60,15 @@ const ParentPlaylist = () => {
         }
     }
 
+
+
+    const getSinglePLaylist = (token, id) => {
+        Dispatch(fetchSinglePLaylist(token, id))
+    }
+    useEffect(() => {
+        getSinglePLaylist(token, id)
+    }, [id])
+
     return (
         <>
             <div className={`${module.outlets}`}  >
@@ -75,7 +96,28 @@ const ParentPlaylist = () => {
                             </div>
                         </div>
                         <div className={`${module.lists}`}>
-                            {SearchResults ? SearchResults.map((e, i) => (
+                            {sP.name > 0 ? sP.tracks.items.map((e, i) => (
+                                <div className={`${module.list}`}>
+                                    <div className={`${module.left} ${module.mainLeftSize}`}>
+                                        <div onMouseEnter={() => setShowPlayOnHover(true)} onMouseLeave={() => setShowPlayOnHover(false)} className="hoverControl">
+                                            {showPlayOnHover ? (<BsPlayFill color='#dadada' style={{ marginTop: '-6px' }} />) : (<h6>{i+1}</h6>)}
+                                        </div>
+                                        <img src={e.track.album.images[0].url} alt="" />
+                                        <div className={`${module.musicDesc}`}>
+                                            <h5>{e.track.name}</h5>
+                                            <h6>{e.track.artists[0].name||'James Hype, Miggy Dela Rosa'}</h6>
+                                        </div>
+                                    </div>
+                                    <div className={`${module.left} ${module.album}`}>
+                                        <h6>{e.track.album.name}</h6>
+                                    </div>
+                                    <div className={`${module.left}`}>
+                                    </div>
+                                    <div className={`${module.left}`}>
+                                        <h6>{(e.track.duration_ms/ 60000).toFixed(2)}</h6>
+                                    </div>
+                                </div>
+                            )) : SearchResults ? SearchResults?.map((e, i) => (
                                 <div className={`${module.list}`}>
                                     <div className={`${module.left} ${module.mainLeftSize}`}>
                                         <div className="play" >
@@ -103,26 +145,7 @@ const ParentPlaylist = () => {
                                         <h6>{(e.duration_ms / 60000).toFixed(2)}</h6>
                                     </div>
                                 </div>
-                            )) : (<div className={`${module.list}`}>
-                                <div className={`${module.left} ${module.mainLeftSize}`}>
-                                    <div onMouseEnter={() => setShowPlayOnHover(true)} onMouseLeave={() => setShowPlayOnHover(false)} className="hoverControl">
-                                        {showPlayOnHover ? (<BsPlayFill color='#dadada' style={{ marginTop: '-6px' }} />) : (<h6><TbNumber1 /></h6>)}
-                                    </div>
-                                    <img src="https://i.scdn.co/image/ab67616d00004851e1660f0eff9c7330b1d99084" alt="" />
-                                    <div className={`${module.musicDesc}`}>
-                                        <h5>Ferrari</h5>
-                                        <h6>James Hype, Miggy Dela Rosa</h6>
-                                    </div>
-                                </div>
-                                <div className={`${module.left} ${module.album}`}>
-                                    <h6>Ferrari</h6>
-                                </div>
-                                <div className={`${module.left}`}>
-                                </div>
-                                <div className={`${module.left}`}>
-                                    <h6>3:06</h6>
-                                </div>
-                            </div>)}
+                            )):""}
                         </div>
                     </div>
 

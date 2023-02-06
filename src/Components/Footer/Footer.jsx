@@ -21,7 +21,7 @@ const Footer = () => {
     const volRef = useRef(null)
 
     const handleMusicBar = (e) => {
-        console.log(e.target.value);
+        // console.log(e.target.value);
         setMusicPlayBack({
             currentTime: e.target.value
         })
@@ -37,7 +37,7 @@ const Footer = () => {
     })
 
     const updateRealTimeProgress = (music) => {
-        console.log("in loop");
+        // console.log("in loop");
 
         setInterval(() => {
             setMusicPlayBack({
@@ -53,7 +53,7 @@ const Footer = () => {
 
 
     useEffect(() => {
-        console.log(musicRef);
+        // console.log(musicRef);
         if (isPlaying === true) {
             musicRef.current.play()
             if (musicRef.current.currentTime !== undefined) {
@@ -68,7 +68,7 @@ const Footer = () => {
 
 
     const handleVolume = (w) => {
-        console.log(w.target.value);
+        // console.log(w.target.value);
         setMusicPlayBack({
             volume:w.target.value
         })

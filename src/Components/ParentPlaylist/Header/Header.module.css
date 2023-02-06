@@ -1,13 +1,18 @@
 .header {
     width: inherit;
     height: 50vh;
-    background-color: transparent;
     display: flex;
     justify-content: flex-start;
     gap: 2vmax;
     padding: 13vh 0;
-
+    /* background-image:url(https://i.scdn.co/image/ab67706f00000003b6adc29c0facbfb12bead55c); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
 }
+
+
 
 .left {
     width: fit-content;
