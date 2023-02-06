@@ -65,6 +65,7 @@ const ParentPlaylist = () => {
     const getSinglePLaylist = (token, id) => {
         Dispatch(fetchSinglePLaylist(token, id))
     }
+    
     useEffect(() => {
         getSinglePLaylist(token, id)
     }, [id])
@@ -100,12 +101,12 @@ const ParentPlaylist = () => {
                                 <div className={`${module.list}`}>
                                     <div className={`${module.left} ${module.mainLeftSize}`}>
                                         <div onMouseEnter={() => setShowPlayOnHover(true)} onMouseLeave={() => setShowPlayOnHover(false)} className="hoverControl">
-                                            {showPlayOnHover ? (<BsPlayFill color='#dadada' style={{ marginTop: '-6px' }} />) : (<h6>{i+1}</h6>)}
+                                            {showPlayOnHover ? (<BsPlayFill color='#dadada' style={{ marginTop: '-6px' }} />) : (<h6>{i + 1}</h6>)}
                                         </div>
                                         <img src={e.track.album.images[0].url} alt="" />
                                         <div className={`${module.musicDesc}`}>
                                             <h5>{e.track.name}</h5>
-                                            <h6>{e.track.artists[0].name||'James Hype, Miggy Dela Rosa'}</h6>
+                                            <h6>{e.track.artists[0].name || 'James Hype, Miggy Dela Rosa'}</h6>
                                         </div>
                                     </div>
                                     <div className={`${module.left} ${module.album}`}>
@@ -114,7 +115,7 @@ const ParentPlaylist = () => {
                                     <div className={`${module.left}`}>
                                     </div>
                                     <div className={`${module.left}`}>
-                                        <h6>{(e.track.duration_ms/ 60000).toFixed(2)}</h6>
+                                        <h6>{(e.track.duration_ms / 60000).toFixed(2)}</h6>
                                     </div>
                                 </div>
                             )) : SearchResults ? SearchResults?.map((e, i) => (
@@ -145,7 +146,7 @@ const ParentPlaylist = () => {
                                         <h6>{(e.duration_ms / 60000).toFixed(2)}</h6>
                                     </div>
                                 </div>
-                            )):""}
+                            )) : ""}
                         </div>
                     </div>
 
