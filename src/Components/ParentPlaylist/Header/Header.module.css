@@ -1,5 +1,5 @@
 .header {
-    width: inherit;
+    width: 85vw;
     height: 50vh;
     display: flex;
     justify-content: flex-start;
@@ -7,8 +7,8 @@
     padding: 13vh 0;
     /* background-image:url(https://i.scdn.co/image/ab67706f00000003b6adc29c0facbfb12bead55c); */
     background-repeat: no-repeat;
-    background-size: cover;
     background-position: center;
+    background-size: cover;
     opacity: 0.8;
 }
 

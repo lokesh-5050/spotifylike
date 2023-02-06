@@ -9,8 +9,6 @@ import Library from './Components/Collections/Playlists/Playlists'
 import SharedCollections from './Pages/SharedCollections'
 import SharedPlaylists from './Pages/SharedPlaylists'
 import Podcasts from './Components/Collections/Podcasts/Podcasts'
-import Music from './Components/Music'
-import Auth from './Components/SpotifyAuth/Auth'
 const App = () => {
   return (
     //   393867c3f32941e6a1ebbf835500996f => Clinet_id
@@ -19,14 +17,12 @@ const App = () => {
       <Routes>
         <Route path='/' element={<SharedHomepage />}>
           <Route index element={<Homepage />} />
-          <Route path='lokesh' element={<Music />} />
           <Route path='search' element={<SearchPage />} />
 
           <Route path='playlist' element={<SharedPlaylists navColor='transparent' />}>
             <Route path=':id' element={<ParentPlaylist />} />
           </Route>
 
-          <Route path='data' element={<Auth />} />
 
           <Route path='collection' element={<SharedCollections />}>
             <Route index element={<Library />} />

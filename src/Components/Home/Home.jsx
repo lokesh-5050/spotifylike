@@ -11,7 +11,8 @@ import { handleAsync, handleAsyncUser } from '../../store/SpotifyApi/CurrentUser
 import { handleAsyncMoreData } from '../../store/SpotifyApi/MoreDataApi'
 import { TokenContexts } from '../../Context/Token'
 const Home = () => {
-  const [token, setToken, navColor, setNavColor] = useContext(TokenContexts)
+  const [token, setToken, navColor, setNavColor, isPlaying, setIsPlaying, currentSongDets, setCurrentSongDets, searchText, setSearchText, showPlaylist, setShowPlaylist] = useContext(TokenContexts)
+  console.log(showPlaylist, " showPlaylist");
   const [minLimitHome, setminLimitHome] = useState(5)
   setNavColor("#02071F")
   const id = useSelector((store) => store.currentUser.UserId)
@@ -64,6 +65,7 @@ const Home = () => {
     let token = window.localStorage.getItem("token")
     if (token) fetchUserInfo(token)
     console.log("Session Expired");
+    setShowPlaylist(true)
   }, [token])
 
   return (

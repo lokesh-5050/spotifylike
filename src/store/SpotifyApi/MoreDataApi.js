@@ -11,7 +11,7 @@ const initialState = {
     Rock: [],
     Gaming: [],
     OnSearch: [],
-    SinglePlaylist: []
+    SinglePlaylist: null
 
 }
 

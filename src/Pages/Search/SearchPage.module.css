@@ -1,19 +1,19 @@
 .wrap {
   display: flex;
-  gap: 2vmax;
+  /* gap: 2vmax; */
   background-color: #121212;
+  width: 100%;
 }
 
 .left {
   width: 15vmax;
   height: 100vh;
-  background-color: yellow;
+  /* background-color: yellow; */
 }
 
 .right {
-  width: 84vmax;
+  width: 85vmax;
   color: #fff;
-  background-color: rgb(18, 19, 19);
   overflow: scroll;
 
 }

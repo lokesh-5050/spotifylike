@@ -6,8 +6,9 @@ import { Link } from 'react-router-dom'
 import module from './Navbar.module.css'
 import { RiSearchLine } from 'react-icons/ri'
 import { TokenContexts } from '../../Context/Token'
-const Navbar = ({handleSearchBar , searchText}) => {
-    const [token, setToken, navColor, setNavColor] = useContext(TokenContexts)
+const Navbar = ({handleSearchBar}) => {
+    const [token, setToken, navColor, setNavColor, isPlaying, setIsPlaying, currentSongDets, setCurrentSongDets,searchText] = useContext(TokenContexts)
+
     setNavColor("")
     setNavColor("#121212")
     const [opt, setOpt] = useState(false)

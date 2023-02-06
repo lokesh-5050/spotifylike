@@ -1,15 +1,15 @@
 .categories{
     width: 100%;
     /* background-color: yellow; */
-    padding: 1vmax 0;
+    padding: 1vmax 2.2vmax;
     display: flex;
     flex-wrap: wrap;
     gap: 1.5vmax;
 
 }
 .categorie{
-    width: 15vmax;
-    height: 15vmax;
+    width: 14.5vmax;
+    height: 14.5vmax;
     background-color: gray;
     border-radius: 10px;
     padding: 1vmax 1vmax;

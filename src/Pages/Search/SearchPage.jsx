@@ -12,9 +12,9 @@ import { useNavigate } from 'react-router-dom'
 import { handleCategories, handleSearch } from '../../store/SpotifyApi/MoreDataApi'
 const SearchPage = () => {
 
-    const [searchText, setSearchText] = useState('')
 
-    const [token, setToken] = useContext(TokenContexts)
+    const [token, setToken, navColor, setNavColor, isPlaying, setIsPlaying, currentSongDets, setCurrentSongDets, searchText, setSearchText, showPlaylist, setShowPlaylist] = useContext(TokenContexts)
+
     // const id = useSelector((store) => store.currentUser.UserId)
 
     // const fetchUserInfo = () => {
@@ -32,6 +32,7 @@ const SearchPage = () => {
     }
 
     useEffect(() => {
+        setShowPlaylist(false)
         let token = window.localStorage.getItem("token")
         if (token) {
             validateUser(token)
@@ -46,8 +47,10 @@ const SearchPage = () => {
         setSearchText(e.target.value)
         // console.log(e.target.value)
         if (e.target.value.length > 0) {
+            setShowPlaylist(false)
             Dispatch(handleSearch(token, e.target.value))
         } else {
+            setShowPlaylist(true)
             console.log("lenght 0")
         }
     }
@@ -59,10 +62,10 @@ const SearchPage = () => {
                     <Sidebar />
                 </div>
 
-                <div className={`${module.right}`} style={{backgroundColor:'#121212'}}>
+                <div className={`${module.right}`} style={{ backgroundColor: '#121212' }}>
 
                     <div className={`${module.nav}`} >
-                        <NavbarSearch handleSearchBar={handleSearchBar} searchText={searchText} />
+                        <NavbarSearch handleSearchBar={handleSearchBar} />
                     </div>
                     <div className={`${module.searchFor}`}>
                         {!searchText.length > 0 ? (<h3>Browse all</h3> && <Categories />) : (<ParentPlaylist />)}

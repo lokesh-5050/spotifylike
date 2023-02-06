@@ -17,12 +17,10 @@ const ParentPlaylist = () => {
 
     //sp => single Playlist
     const sP = useSelector((store) => store.moreData.SinglePlaylist)
-    console.log(sP.tracks);
 
 
 
-    const [token, setToken, navColor, setNavColor, isPlaying, setIsPlaying, currentSongDets, setCurrentSongDets] = useContext(TokenContexts)
-    // console.log(isPlaying, " isPlaying");
+    const [token, setToken, navColor, setNavColor, isPlaying, setIsPlaying, currentSongDets, setCurrentSongDets, searchText, setSearchText,showPlaylist , setShowPlaylist] = useContext(TokenContexts)
 
     const Dispatch = useDispatch()
 
@@ -65,9 +63,10 @@ const ParentPlaylist = () => {
     const getSinglePLaylist = (token, id) => {
         Dispatch(fetchSinglePLaylist(token, id))
     }
-    
+
     useEffect(() => {
         getSinglePLaylist(token, id)
+
     }, [id])
 
     return (
@@ -97,16 +96,23 @@ const ParentPlaylist = () => {
                             </div>
                         </div>
                         <div className={`${module.lists}`}>
-                            {sP.name > 0 ? sP.tracks.items.map((e, i) => (
+                            {typeof sP === 'object' && sP !== null && showPlaylist ? sP.tracks.items.map((e, i) => (
                                 <div className={`${module.list}`}>
                                     <div className={`${module.left} ${module.mainLeftSize}`}>
-                                        <div onMouseEnter={() => setShowPlayOnHover(true)} onMouseLeave={() => setShowPlayOnHover(false)} className="hoverControl">
-                                            {showPlayOnHover ? (<BsPlayFill color='#dadada' style={{ marginTop: '-6px' }} />) : (<h6>{i + 1}</h6>)}
+                                        <div className="play" >
+                                            <div className={`${module.hoverControl}`} >
+                                                <div className={`${module.box}`}>
+                                                    <h6 className={`${module.count}`}>{i + 1}</h6>
+                                                    <h6 className={`${module.play}`}><i onClick={handleMusic} ref={iconRef} class="ri-play-fill"></i></h6>
+                                                    {/* <TiMediaPause style={{ display: 'none' }} /> */}
+                                                </div>
+                                                <audio ref={musicRef} style={{ display: 'none' }} src={e.track.preview_url} controls>hey</audio>
+                                            </div>
                                         </div>
                                         <img src={e.track.album.images[0].url} alt="" />
                                         <div className={`${module.musicDesc}`}>
                                             <h5>{e.track.name}</h5>
-                                            <h6>{e.track.artists[0].name || 'James Hype, Miggy Dela Rosa'}</h6>
+                                            <h6>{e.track.artists[0].name}</h6>
                                         </div>
                                     </div>
                                     <div className={`${module.left} ${module.album}`}>
@@ -146,7 +152,11 @@ const ParentPlaylist = () => {
                                         <h6>{(e.duration_ms / 60000).toFixed(2)}</h6>
                                     </div>
                                 </div>
-                            )) : ""}
+                            )) : (<div class={`${module.loader}`}>
+                                <span class={`${module.bar}`}></span>
+                                <span class={`${module.bar}`}></span>
+                                <span class={`${module.bar}`}></span>
+                            </div>)}
                         </div>
                     </div>
 

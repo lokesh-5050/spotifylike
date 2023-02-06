@@ -5,13 +5,16 @@ const Token = (props) => {
     const [navColor, setNavColor] = useState("#02071f")
     const [isPlaying, setIsPlaying] = useState(false)
     const [currentSongDets, setCurrentSongDets] = useState({
-        src:"",
-        img:"",
-        artist:"",
-        name:""
+        src: "",
+        img: "",
+        artist: "",
+        name: ""
     })
+    const [searchText, setSearchText] = useState('');
+    const [showPlaylist, setShowPlaylist] = useState(true)
+
     return (
-        <TokenContexts.Provider value={[token, setToken, navColor, setNavColor , isPlaying , setIsPlaying , currentSongDets , setCurrentSongDets]}>
+        <TokenContexts.Provider value={[token, setToken, navColor, setNavColor, isPlaying, setIsPlaying, currentSongDets, setCurrentSongDets, searchText, setSearchText,showPlaylist , setShowPlaylist]}>
             {props.children}
         </TokenContexts.Provider>
     )
