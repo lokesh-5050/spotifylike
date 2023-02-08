@@ -104,7 +104,7 @@ const ParentPlaylist = ({ albums }) => {
                             </div>
                         </div>
                         <div className={`${module.lists}`}>
-                            {typeof sP === 'object' && sP !== null && showPlaylist ? sP.tracks.items.map((e, i) => (
+                            {sP !== null && showPlaylist ? sP?.tracks.items.map((e, i) => (
                                 <div className={`${module.list}`}>
                                     <div className={`${module.left} ${module.mainLeftSize}`}>
                                         <div className="play" >
@@ -160,7 +160,7 @@ const ParentPlaylist = ({ albums }) => {
                                         <h6>{(e.duration_ms / 60000).toFixed(2)}</h6>
                                     </div>
                                 </div>
-                            )) : albums === 'true' ? albumsData.tracks.items.map((e, i) => (
+                            )) : albumsData ? albumsData.tracks.items.map((e, i) => (
                                 <div className={`${module.list}`}>
                                     <div className={`${module.left} ${module.mainLeftSize}`}>
                                         <div className="play" >
@@ -188,7 +188,7 @@ const ParentPlaylist = ({ albums }) => {
                                         <h6>{(e.duration_ms / 60000).toFixed(2)}</h6>
                                     </div>
                                 </div>
-                            )) : "hey"}
+                            )) : ""}
                         </div>
                     </div>
 

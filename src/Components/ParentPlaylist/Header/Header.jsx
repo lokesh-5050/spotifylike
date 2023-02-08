@@ -1,9 +1,10 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { TokenContexts } from '../../../Context/Token'
+import { getSingleAlbum, getSingleplaylist } from '../../../store/SpotifyApi/MoreDataApi'
 import module from '../Header/Header.module.css'
 
-const Header = () => {
+const Header = ({ albums, id }) => {
   const SearchResults = useSelector((store) => store.moreData.OnSearch)
   // console.log(SearchResults[0])
 
@@ -13,6 +14,10 @@ const Header = () => {
   //sp => single Playlist
   const sP = useSelector((store) => store.moreData.SinglePlaylist)
   console.log(sP);
+
+
+  const albumsData = useSelector((store) => store.moreData.SingleAlbum)
+  console.log(albumsData, "  albums");
 
   let temp = 0;
   const averageTime = () => {
@@ -24,6 +29,17 @@ const Header = () => {
     }
     return (temp + " ms");
   }
+
+  useEffect(() => {
+    if (albums === 'true') {
+      getSingleAlbum(token, id)
+    } else {
+      getSingleplaylist(token, id)
+    }
+
+  }, [id])
+
+
 
   return (
     <>
@@ -41,7 +57,7 @@ const Header = () => {
             {/* {SearchResults[0] ? "" : (<h4>Tita Lau , Oliver Helends, Lazza <span>and more</span></h4>)} */}
           </div>
         </div>
-      </div>) : (<div className={`${module.header}`}>
+      </div>) : SearchResults[0] ? (<div className={`${module.header}`}>
         <div className={`${module.left}`}>
           <img src={SearchResults[0] ? SearchResults[0].album.images[0].url : `https://seed-mix-image.spotifycdn.com/v6/img/artist/43BxCL6t4c73BQnIJtry5v/en/default`} alt="" />
           <img src="" alt="" />
@@ -56,7 +72,24 @@ const Header = () => {
             {SearchResults[0] ? "" : (<h4>Tita Lau , Oliver Helends, Lazza <span>and more</span></h4>)}
           </div>
         </div>
-      </div>)}
+      </div>) : albumsData ? albumsData.tracks.items.map((e, i) => (
+        <div className={`${module.header}`}>
+          <div className={`${module.left}`}>
+            <img src={ albumsData.images[0].url ||`https://seed-mix-image.spotifycdn.com/v6/img/artist/43BxCL6t4c73BQnIJtry5v/en/default`} alt="" />
+            <img src="" alt="" />
+          </div>
+          <div className={`${module.right}`}>
+            <h6>Album</h6>
+            <h1>{e.name.slice(0, 16) + '...' || "James Hype Mix"}</h1>
+            <div className={`${module.desc}`}>
+              {e.artists[0].name || "James Hype"} <br />  
+              {e.popularity || "popularity : 100"}
+              {/* {"" : (<h4>Made for user.Spotify.id ᾉἆῈᾑ 50 songs, about 2 hr 15 min<span>and more</span></h4>)} */}
+              {/* {"" : (<h4>Tita Lau , Oliver Helends, Lazza <span>and more</span></h4>)} */}
+            </div>
+          </div>
+        </div>
+      )) : ""}
 
     </>
   )
