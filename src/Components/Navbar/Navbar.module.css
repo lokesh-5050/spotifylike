@@ -19,6 +19,7 @@
     font-size: 1.2vw;
     background-color: rgb(44, 44, 44);
     color: rgb(211, 211, 211);
+    cursor: pointer;
 }
 
 .left {
@@ -199,14 +200,17 @@
     display: flex;
     gap: 10px;
 }
-.options_link > a{
+
+.options_link>a {
     color: #fff;
     text-decoration: none;
     /* background-color: yellow; */
 }
-.options_link > a:hover{
+
+.options_link>a:hover {
     color: #fff;
 }
+
 .graBox {
     width: 7vmax;
     height: 100%;
@@ -216,13 +220,15 @@
     align-items: center;
     padding-top: 5px;
     font-weight: 900;
-    
+
 }
-.on{
+
+.on {
     border-radius: 5px;
     background-color: #5f5d5da6;
 }
-.inactive{
+
+.inactive {
     border-radius: 5px;
     background-color: rgba(94, 93, 93, 0);
 }

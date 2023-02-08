@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { TokenContexts } from '../Context/Token'
 import { checkIsTokenValid } from '../store/SpotifyApi/CurrentUserApi'
 const SharedPlaylists = () => {
-    const [token, setToken, navColor ,setNavColor] = useContext(TokenContexts)
+    const [token, setToken, navColor, setNavColor] = useContext(TokenContexts)
     setNavColor("transparent")
     const id = useSelector((store) => store.currentUser.UserId)
 

@@ -10,22 +10,24 @@ import { BsPlayFill } from 'react-icons/bs'
 import { useDispatch, useSelector } from 'react-redux'
 import { TokenContexts } from '../../Context/Token'
 import { useParams } from 'react-router-dom'
-import { fetchSinglePLaylist } from '../../store/SpotifyApi/MoreDataApi'
-const ParentPlaylist = () => {
+import { fetchSingleAlbum, fetchSinglePLaylist } from '../../store/SpotifyApi/MoreDataApi'
+const ParentPlaylist = ({ albums }) => {
+    const Dispatch = useDispatch()
+
     const { id } = useParams()
     console.log(id, "id");
 
     //sp => single Playlist
     const sP = useSelector((store) => store.moreData.SinglePlaylist)
+    console.log(sP, " single playlist");
 
-
-
-    const [token, setToken, navColor, setNavColor, isPlaying, setIsPlaying, currentSongDets, setCurrentSongDets, searchText, setSearchText,showPlaylist , setShowPlaylist] = useContext(TokenContexts)
-
-    const Dispatch = useDispatch()
+    const [token, setToken, navColor, setNavColor, isPlaying, setIsPlaying, currentSongDets, setCurrentSongDets, searchText, setSearchText, showPlaylist, setShowPlaylist] = useContext(TokenContexts)
 
     const SearchResults = useSelector((store) => store.moreData.OnSearch)
     const musicRef = useRef(null)
+
+    const albumsData = useSelector((store) => store.moreData.SingleAlbum)
+    console.log(albumsData, "  albums");
 
     const iconRef = useRef(null)
 
@@ -58,14 +60,20 @@ const ParentPlaylist = () => {
         }
     }
 
-
-
     const getSinglePLaylist = (token, id) => {
         Dispatch(fetchSinglePLaylist(token, id))
     }
 
+    const getSingleAlbum = (token, id) => {
+        Dispatch(fetchSingleAlbum(token, id))
+    }
+
     useEffect(() => {
-        getSinglePLaylist(token, id)
+        if (albums === 'true') {
+            getSingleAlbum(token, id)
+        } else {
+            getSinglePLaylist(token, id)
+        }
 
     }, [id])
 
@@ -152,11 +160,35 @@ const ParentPlaylist = () => {
                                         <h6>{(e.duration_ms / 60000).toFixed(2)}</h6>
                                     </div>
                                 </div>
-                            )) : (<div class={`${module.loader}`}>
-                                <span class={`${module.bar}`}></span>
-                                <span class={`${module.bar}`}></span>
-                                <span class={`${module.bar}`}></span>
-                            </div>)}
+                            )) : albums === 'true' ? albumsData.tracks.items.map((e, i) => (
+                                <div className={`${module.list}`}>
+                                    <div className={`${module.left} ${module.mainLeftSize}`}>
+                                        <div className="play" >
+                                            <div className={`${module.hoverControl}`} >
+                                                <div className={`${module.box}`}>
+                                                    <h6 className={`${module.count}`}>{i + 1}</h6>
+                                                    <h6 className={`${module.play}`}><i onClick={handleMusic} ref={iconRef} class="ri-play-fill"></i></h6>
+                                                    {/* <TiMediaPause style={{ display: 'none' }} /> */}
+                                                </div>
+                                                <audio ref={musicRef} style={{ display: 'none' }} src={e.track.preview_url || ""} controls>hey</audio>
+                                            </div>
+                                        </div>
+                                        <img src={e.track.album.images[0].url || ""} alt="" />
+                                        <div className={`${module.musicDesc}`}>
+                                            <h5>{e.name}</h5>
+                                            <h6>{e.artists[0].name}</h6>
+                                        </div>
+                                    </div>
+                                    <div className={`${module.left} ${module.album}`}>
+                                        <h6></h6>
+                                    </div>
+                                    <div className={`${module.left}`}>
+                                    </div>
+                                    <div className={`${module.left}`}>
+                                        <h6>{(e.duration_ms / 60000).toFixed(2)}</h6>
+                                    </div>
+                                </div>
+                            )) : "hey"}
                         </div>
                     </div>
 

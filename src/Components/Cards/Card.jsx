@@ -27,7 +27,7 @@ const Card = ({ feaPlyts, newRelse, tracktrue, Recommanded, Rock, Gaming, playli
 
       </div>) : newRelse ? (<div className={`${module.cards} ${playlist ? module.cards_flex : ''}}`}>
         {data?.map((e, i) => (
-          <Link to={`/playlist/${e.id}`}>
+          <Link to={`/albums/${e.id}`}>
 
             <div className={`${module.card}`}>
               <div className={`${module.cover}`}>
@@ -41,7 +41,7 @@ const Card = ({ feaPlyts, newRelse, tracktrue, Recommanded, Rock, Gaming, playli
 
       </div>) : tracktrue ? (<div className={`${module.cards} ${playlist ? module.cards_flex : ''}}`}>
         {data?.map((e, i) => (
-          <Link to={`/playlist/${e.id}`}>
+          <Link to={`/tracks/${e.id}`}>
 
             <div className={`${module.card}`}>
               <div className={`${module.cover}`}>
@@ -55,7 +55,7 @@ const Card = ({ feaPlyts, newRelse, tracktrue, Recommanded, Rock, Gaming, playli
 
       </div>) : Recommanded ? ((<div className={`${module.cards} ${playlist ? module.cards_flex : ''}}`}>
         {data?.map((e, i) => (
-          <Link to={`/playlist/${e.id}`}>
+          <Link to={`/tracks/${e.id}`}>
 
             <div className={`${module.card}`}>
               <div className={`${module.cover}`}>

@@ -10,7 +10,7 @@ const Card = ({ showsToTry, topMixes, recentlyPlayed, artists, data }) => {
       </div>
       <div className={`${module.cards}`}>
         {data?.map((e, i) => (
-          <Link to={`/artist/${e.id}`}>
+          <Link to={`/artists/${e.id}`}>
             <div className={`${module.card}`}>
               <div className={`${module.cover} ${module.artist}`}>
                 <img src={e.images[0].url} alt="" />

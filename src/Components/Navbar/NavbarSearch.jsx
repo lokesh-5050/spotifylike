@@ -2,12 +2,13 @@ import React, { useContext, useRef, useState } from 'react'
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md'
 import { RiArrowDownSFill } from 'react-icons/ri'
 import { IoMdArrowDropup } from 'react-icons/io'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import module from './Navbar.module.css'
 import { RiSearchLine } from 'react-icons/ri'
 import { TokenContexts } from '../../Context/Token'
-const Navbar = ({handleSearchBar}) => {
-    const [token, setToken, navColor, setNavColor, isPlaying, setIsPlaying, currentSongDets, setCurrentSongDets,searchText] = useContext(TokenContexts)
+const Navbar = ({ handleSearchBar }) => {
+    const Navigate = useNavigate()
+    const [token, setToken, navColor, setNavColor, isPlaying, setIsPlaying, currentSongDets, setCurrentSongDets, searchText] = useContext(TokenContexts)
 
     setNavColor("")
     setNavColor("#121212")
@@ -24,21 +25,21 @@ const Navbar = ({handleSearchBar}) => {
         }
     }
 
-    const handleLogout = ()=>{
+    const handleLogout = () => {
         window.localStorage.removeItem("token")
         setToken("")
     }
     return (
         <>
-            <div className={`${module.nav}`} style={{backgroundColor:navColor}}>
+            <div className={`${module.nav}`} style={{ backgroundColor: navColor }}>
                 <div className={`${module.left}`}>
                     <div className={`${module.navigations}`}>
 
-                        <div className={`${module.cir}`}>
+                        <div className={`${module.cir}`} onClick={() => Navigate(-1)}>
                             <MdArrowBackIosNew />
                         </div>
 
-                        <div className={`${module.cir}`}>
+                        <div className={`${module.cir}`} onClick={() => Navigate(+1)}>
                             <MdArrowForwardIos />
                         </div>
                     </div>
@@ -101,7 +102,7 @@ const Navbar = ({handleSearchBar}) => {
                                 <div className={`${module.list}`} >
                                     <h6>Logout</h6>
                                 </div>
-                                </a>
+                            </a>
                         </div>
                     </div>
                 </div>

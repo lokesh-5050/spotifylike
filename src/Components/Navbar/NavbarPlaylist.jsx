@@ -2,10 +2,11 @@ import React, { useContext, useRef, useState } from 'react'
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md'
 import { RiArrowDownSFill } from 'react-icons/ri'
 import { IoMdArrowDropup } from 'react-icons/io'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import module from './Navbar.module.css'
 import { TokenContexts } from '../../Context/Token'
 const Navbar = () => {
+    const Navigate = useNavigate()
     const [token, setToken, navColor, setNavColor] = useContext(TokenContexts)
     console.log(navColor);
     setNavColor("")
@@ -37,11 +38,11 @@ const Navbar = () => {
                 <div className={`${module.left}`}>
                     <div className={`${module.navigations}`}>
 
-                        <div className={`${module.cir}`}>
+                        <div className={`${module.cir}`} onClick={()=>Navigate(-1) }>
                             <MdArrowBackIosNew />
                         </div>
 
-                        <div className={`${module.cir}`}>
+                        <div className={`${module.cir}`} onClick={()=>Navigate(+1) }>
                             <MdArrowForwardIos />
                         </div>
                     </div>

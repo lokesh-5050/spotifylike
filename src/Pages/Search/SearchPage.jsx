@@ -69,14 +69,9 @@ const SearchPage = () => {
                     </div>
                     <div className={`${module.searchFor}`}>
                         {!searchText.length > 0 ? (<h3>Browse all</h3> && <Categories />) : (<ParentPlaylist />)}
-                        {/* <h3>Browse all</h3> */}
-                        {/* <Categories /> */}
-
                     </div>
                 </div>
-                {/* <div className={`${module.footer}`}>
-                    <Footer />
-                </div> */}
+
             </div>
 
         </>

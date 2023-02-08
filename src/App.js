@@ -23,6 +23,16 @@ const App = () => {
             <Route path=':id' element={<ParentPlaylist />} />
           </Route>
 
+          <Route path='albums' element={<SharedPlaylists navColor='transparent' />}>
+            <Route path=':id' element={<ParentPlaylist albums='true'/>} />
+          </Route>
+
+          <Route path='tracks' element={<SharedPlaylists navColor='transparent' />}>
+            <Route path=':id' element={<ParentPlaylist />} />
+          </Route>
+
+
+
 
           <Route path='collection' element={<SharedCollections />}>
             <Route index element={<Library />} />

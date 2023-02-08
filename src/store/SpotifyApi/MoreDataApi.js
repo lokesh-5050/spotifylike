@@ -11,8 +11,8 @@ const initialState = {
     Rock: [],
     Gaming: [],
     OnSearch: [],
-    SinglePlaylist: null
-
+    SinglePlaylist: null,
+    SingleAlbum: null
 }
 
 export const MoreDataSlice = createSlice({
@@ -48,6 +48,9 @@ export const MoreDataSlice = createSlice({
         },
         getSingleplaylist: (state, actions) => {
             state.SinglePlaylist = actions.payload
+        },
+        getSingleAlbum: (state, actions) => {
+            state.SingleAlbum = actions.payload
         }
 
     },
@@ -72,7 +75,7 @@ export const handleAsyncMoreData = (token, limit) => (dispatch, prevState) => {
             },
         })
 
-        // console.log(newreleases.data.albums.items, " newreleases");
+        console.log(newreleases.data, " newreleases");
         await dispatch(getNewReleases(newreleases.data.albums.items))
 
         let severalTracks = await spotifyAPi(`/tracks?market=ES&ids=7ouMYWpwJ422jRcDASZB7P%2C4VqPOruhp5EdPBeR92t6lQ%2C2takcwOaAZWiXQijPHIx7B`, {
@@ -165,7 +168,7 @@ export const handleSearch = (token, query) => async (dispatch, prevState) => {
 
 export const fetchSinglePLaylist = (token, id) => async (dispatch, prevS) => {
     console.log("in single play fetch");
-    const {data} = await spotifyAPi(`playlists/${id}`, {
+    const { data } = await spotifyAPi(`playlists/${id}`, {
         headers: {
             Authorization: `Bearer ${token}`
         },
@@ -175,7 +178,19 @@ export const fetchSinglePLaylist = (token, id) => async (dispatch, prevS) => {
     dispatch(getSingleplaylist(data))
 }
 
+export const fetchSingleAlbum = (token, id) => async (dispatch, prevS) => {
+    console.log("in single play fetch");
+    const { data } = await spotifyAPi(`/albums/${id}`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+    })
+
+    console.log(data);
+    dispatch(getSingleAlbum(data))
+}
+
 export const { getFeaturedPlaylists, getCategories,
-    getNewReleases, getSeveralTracks, getArtists, getRecommendations, getRock, getGaming, getSearches, getSingleplaylist } = MoreDataSlice.actions
+    getNewReleases, getSeveralTracks, getArtists, getRecommendations, getRock, getGaming, getSearches, getSingleplaylist,getSingleAlbum } = MoreDataSlice.actions
 
 export default MoreDataSlice.reducer;
