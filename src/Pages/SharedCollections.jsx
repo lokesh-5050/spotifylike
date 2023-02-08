@@ -37,9 +37,9 @@ const AllShared = () => {
     return (
         <>
             <div className={`${module.wrap}`}>
-                <div className={`${module.left}`}>
+                {/* <div className={`${module.left}`}>
                     <Sidebar />
-                </div>
+                </div> */}
 
                 <div className={`${module.right}`}>
                     <div className={`${module.nav}`}>
@@ -49,9 +49,9 @@ const AllShared = () => {
                     <Outlet />
 
                 </div>
-                <div className={`${module.footer}`}>
+                {/* <div className={`${module.footer}`}>
                     <Footer />
-                </div>
+                </div> */}
             </div>
         </>
     )

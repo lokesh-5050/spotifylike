@@ -1,0 +1,32 @@
+.warp {
+    display: flex;
+    gap: 3vmax;
+}
+
+.left {
+    width: 15vmax;
+    height: 100vh;
+    background-color: rgb(0, 0, 0);
+    padding: 3vh 3vw;
+    position: fixed;
+}
+
+.footer {
+    background-color: red;
+    position: fixed;
+    bottom: 0vw;
+    width: 100%;
+    z-index: 99999;
+}
+
+.right {
+    width: 100vmax;
+
+    /* background-color: #02071f; */
+    background-color: #f0cd06;
+    padding-left: 3vw;
+    /* max-height: 50vh; */
+    min-height: 100vh;
+    padding-bottom: 25vmax;
+
+}

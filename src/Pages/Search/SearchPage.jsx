@@ -74,9 +74,9 @@ const SearchPage = () => {
 
                     </div>
                 </div>
-                <div className={`${module.footer}`}>
+                {/* <div className={`${module.footer}`}>
                     <Footer />
-                </div>
+                </div> */}
             </div>
 
         </>

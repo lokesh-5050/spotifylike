@@ -111,7 +111,7 @@
   width: 100vmax;
 
   background-color: #02071f;
-  padding-left: 3vw;
+  padding-left: 17vw;
   /* max-height: 50vh; */
   min-height: 100vh;
   padding-bottom: 25vmax;
@@ -142,7 +142,7 @@
   width: 81.8vmax;
   position: relative;
   top: 6vw;
-  left: 14vmax;
+  /* left: 14vmax; */
   color: #fff;
 
 }

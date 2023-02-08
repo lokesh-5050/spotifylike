@@ -1,11 +1,13 @@
 .footer {
-    width: 100%;
+    width: 100vmax;
     height: 12.5vh;
-    background-color: #292929;
+    background-color: #161616;
     display: flex;
     justify-content: space-between;
     color: #fff;
     z-index: 888;
+    position: fixed;
+    bottom: 0vw;
 
 }
 

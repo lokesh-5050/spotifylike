@@ -64,10 +64,11 @@ const Sidebar = () => {
                                 </div>
                                 <h6>Your Episodes</h6>
                             </div>
+                            <hr />
                         </Link>
 
 
-                        <hr style={{ width: "23.5vh", color: "#dfdfdf" }} />
+                        {/* <hr style={{ width: "23.5vh", color: "#dfdfdf" }} /> */}
 
                         <div className={`${module.main_logos} ${module.playlists} `}>
                             <div className={`${module.main_list} ${module.playlist_name}`}>

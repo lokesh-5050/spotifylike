@@ -47,9 +47,9 @@ const SharedPlaylists = () => {
                     <Outlet />
 
                 </div>
-                <div className={`${module.footer}`}>
+                {/* <div className={`${module.footer}`}>
                     <Footer />
-                </div>
+                </div> */}
             </div>) : <Login />}
 
 
