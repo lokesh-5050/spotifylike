@@ -14,3 +14,5 @@ export const spotifyAPi = axios.create({
     method:"GET",
     baseURL:'https://api.spotify.com/v1/'
 })
+
+//soon will add more liked songs playlist
